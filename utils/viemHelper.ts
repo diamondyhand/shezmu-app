@@ -18,9 +18,14 @@ export const getPublicClient = () => {
 };
 
 export const getWalletClient = () => {
-  const walletClient = createWalletClient({
-    chain: [goerli, mainnet].find((chain) => chain.id === Number(CHAIN_ID)),
-    transport: typeof window != 'undefined' ? fallback([custom((window as any).ethereum), alchemyWebSocket, infuraHttp]) : fallback([alchemyWebSocket, infuraHttp]),
-  });
-  return walletClient;
+  if (typeof window !== 'undefined') {
+    if ((window as any).ethereum) {
+      const walletClient = createWalletClient({
+        chain: [goerli, mainnet].find((chain) => chain.id === Number(CHAIN_ID)),
+        transport: typeof window != 'undefined' ? fallback([custom((window as any).ethereum), alchemyWebSocket, infuraHttp]) : fallback([alchemyWebSocket, infuraHttp]),
+      });
+      return walletClient;
+    }
+  }
+  return null;
 };
