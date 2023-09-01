@@ -1,0 +1,29 @@
+// ** constants imports
+import { RouterLinkConfig } from "@/components/widgets/Constants/main"
+// ** style imports
+import { FooterContainer, Divider } from "./style"
+import LogoSVG from "@/components/widgets/SVG/Logo"
+
+export default function Footer() {
+    return (
+        <FooterContainer>
+            <div className="max-w-7xl w-full self-center flex flex-wrap mt-20 z-20 px-5 md:px-12 lg:px-16 xl:px-0 gap-y-6">
+                {RouterLinkConfig.map(item => (
+                    <div key={item.title} className="w-full sm:w-1/2 lg:w-1/4">
+                        <div className={`text-sm text-[#A1A1AA] font-bold ${!item.subTitles && 'cursor-pointer'}`}>{item.title}</div>
+                        {item.subTitles && (
+                            item.subTitles.map(item => (
+                                <div key={item} className="font-light leading-[120%] text-[#A1A1AA] mt-4 cursor-pointer">{item}</div>
+                            ))
+                        )}
+                    </div>
+                ))}
+                <Divider className="mt-16 mb-8" />
+                <div className="mb-12 flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-6">
+                    <LogoSVG />
+                    <div className="text-[#D1B03A]">© 2077 Shezmu. All rights reserved.</div>
+                </div>
+            </div>
+        </FooterContainer>
+    )
+}
