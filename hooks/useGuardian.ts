@@ -29,7 +29,7 @@ export enum GuardianID {
 
 const useGuardian = () => {
   const guardianContract = getGuardianContract();
-  const guardianAddress = guardianContract.address;
+  const guardianAddress = guardianContract?.address;
   const { address: account } = useAccount();
 
   const [guardianInfo, setGuardianInfo] = useState<GuardianInfo>({
@@ -45,6 +45,7 @@ const useGuardian = () => {
   const { decimals: shezmuDecimals } = useERC20Token(getShezmuAddress());
 
   const fetchGuardianInfo = useCallback(async () => {
+    if (!guardianContract) return;
     const [pricePerGuardian, mintLimit, rewardRate, txnFee, allFeeTokens, claimFee] = await Promise.all([
       guardianContract.read.pricePerGuardian(),
       guardianContract.read.mintLimit(),
@@ -94,9 +95,9 @@ const useGuardian = () => {
     async (address: string) => {
       if (!address || !account || !guardianAddress) return 0;
       const tokenContract = getERC20TokenContract(address);
-      const decimals = await tokenContract.read.decimals();
+      const decimals = await tokenContract?.read.decimals();
       const allowance = await getAllowance(address, account, guardianAddress)
-      const tokenAllowance = allowance / 10 ** decimals
+      const tokenAllowance = allowance / 10 ** (decimals as number)
       return tokenAllowance;
     },
     [account, guardianAddress]

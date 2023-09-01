@@ -10,7 +10,7 @@ import { ZERO_ADDRESS } from "@/config/constants/network";
 
 const useERC20Token = (address: string) => {
   const tokenContract = getERC20TokenContract(address);
-  const tokenAddress = tokenContract.address;
+  const tokenAddress = tokenContract?.address;
   const { address: account } = useAccount();
   const [decimals, setDecimals] = useState(18);
   const [userBalance, setUserBalance] = useState(0);
@@ -61,7 +61,7 @@ const useERC20Token = (address: string) => {
   );
 
   useEffect(() => {
-    if (tokenAddress != ZERO_ADDRESS) {
+    if (tokenAddress != ZERO_ADDRESS && tokenContract) {
       (async () => {
         const decimals = await tokenContract.read.decimals();
         setDecimals(Number(decimals));

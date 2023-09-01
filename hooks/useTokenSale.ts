@@ -19,7 +19,7 @@ export interface TokenSaleInfo {
 const useTokenSale = () => {
   const { address: account } = useAccount();
   const tokenSaleContract = getTokenSaleContract();
-  const tokenSaleAddress = tokenSaleContract.address;
+  const tokenSaleAddress = tokenSaleContract?.address;
   const [tokenSaleInfo, setTokenSaleInfo] = useState<TokenSaleInfo>({
     shezmuAmount: 0,
     totalShezmuAmount: 0,
@@ -33,6 +33,7 @@ const useTokenSale = () => {
   const { decimals: shezmuDecimals } = useERC20Token(getShezmuAddress());
 
   const fetchTokenSaleInfo = useCallback(async () => {
+    if (!tokenSaleContract) return;
     const [
       shezmuAmount,
       totalShezmuAmount,
