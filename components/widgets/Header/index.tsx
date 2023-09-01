@@ -35,6 +35,7 @@ export default function Header() {
     }
 
     useEffect(() => {
+        if (!walletClient) return;
         if (chain?.id && CHAIN_ID) {
             (async () => {
                 if (CHAIN_ID !== chain?.id) {
