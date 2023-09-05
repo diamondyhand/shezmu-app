@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 // ** wagmi && viem imports
 import { useAccount } from "wagmi";
 import { useWeb3Modal } from "@web3modal/react";
-import { parseEther } from "viem";
+import { parseEther, parseUnits } from "viem";
 // ** components imports
 import ApproveBtn from "@/components/widgets/Button/ApproveBtn";
 import TokenSelect from "@/components/widgets/TokenSelect";
@@ -110,7 +110,7 @@ export default function MintTab() {
             return;
         try {
             const tokenDecimal = await getDecimals(selectedToken?.address as `0x${string}`)
-            const approveAmount = parseEther((guardianInfo?.txnFee * (10 ** tokenDecimal) / (10 ** 18)).toString())
+            const approveAmount = parseUnits(guardianInfo?.txnFee.toString(), tokenDecimal)
             setIsApproving((prevState) =>
                 prevState.map((value, index) => (index === 1 ? true : value))
             );
