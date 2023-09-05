@@ -109,8 +109,7 @@ export default function MintTab() {
         if (!guardianAddress || !guardianAmount || !address || !selectedTokenApprove)
             return;
         try {
-            const tokenDecimal = await getDecimals(selectedToken?.address as `0x${string}`)
-            const approveAmount = parseEther((guardianInfo?.txnFee * (10 ** tokenDecimal) / 10 ** 18).toString())
+            const approveAmount = parseEther((guardianInfo?.txnFee).toString())
             setIsApproving((prevState) =>
                 prevState.map((value, index) => (index === 1 ? true : value))
             );
