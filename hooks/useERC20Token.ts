@@ -52,7 +52,7 @@ const useERC20Token = (address: string) => {
       //   { account }
       // );
       // if (result) {
-      const txnHash = await tokenContract.write.approve([spender as `0x${string}`, amount], { account, chain: goerli });
+      const txnHash = await tokenContract.write.approve([spender as `0x${string}`, amount], { account });
       return txnHash;
       // }
       // return null;
