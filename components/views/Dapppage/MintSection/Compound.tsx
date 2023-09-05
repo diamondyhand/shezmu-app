@@ -202,7 +202,6 @@ export default function Compound() {
                 </div>
             </div>
             {walletConnected ? <button disabled={isMintBtnDisabled} className='disabled:opacity-50 bg-[#2C91FE] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%]' onClick={() => handleCompound()}>{isMinting ? 'Compounding...' : 'Compound'}</button> : <button className='disabled:opacity-50 opacity-100 bg-[#F8D044] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%] mt-2 sm:mt-0' onClick={open}>Connect wallet</button>}
-            <div className='text-xs font-bold leading-[120%] text-center text-[#A1A1AA]'>This is a disclaimer text to describe the rules of the transaction and what fees are involved.</div>
         </div>
     )
 }

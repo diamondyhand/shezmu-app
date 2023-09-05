@@ -56,8 +56,7 @@ export default function MintTab() {
     const [isApproving, setIsApproving] = useState([false, false]);
     const [error, setError] = useState<String>("");
     const [shezmuAllowance, setShezmuAllowance] = useState(0);
-    const [selectedTokenAllowance, setSelectedTokenAllowance] =
-        useState<number>(0);
+    const [selectedTokenAllowance, setSelectedTokenAllowance] = useState<number>(0);
     const [isMinting, setIsMinting] = useState(false);
     const [isShezmuApproved, setIsShezmuApproved] = useState(true);
     const [isTokenApproved, setIsTokenApproved] = useState(true);
@@ -212,7 +211,6 @@ export default function MintTab() {
         if (tokenTimeRef.current) {
             clearTimeout(tokenTimeRef.current);
         }
-        console.log("Yahoo!!");
         tokenTimeRef.current = setTimeout(() => {
             if (guardianInfo?.txnFee && selectedTokenAllowance !== undefined)
                 if (selectedTokenAllowance > 0)
@@ -291,7 +289,6 @@ export default function MintTab() {
                 </div>
             </div>
             {walletConnected ? <button disabled={isMintButtonDisabled} className='disabled:opacity-50 bg-[#F8D044] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%] mt-2 sm:mt-0' onClick={() => handleGuardianMint()}>{isMinting ? 'Minting...' : 'Mint'}</button> : <button className='disabled:opacity-50 opacity-100 bg-[#F8D044] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%] mt-2 sm:mt-0' onClick={open}>Connect wallet</button>}
-            <div className='text-xs font-bold leading-[120%] text-center text-[#A1A1AA]'>This is a disclaimer text to describe the rules of the transaction and what fees are involved.</div>
         </div>
     )
 }

@@ -186,7 +186,6 @@ export default function RewardTab() {
             {walletConnected ? <button disabled={isClaimBtnDisabled} className='disabled:opacity-60 bg-[#2C91FE] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%]' onClick={handleClaim}>
                 {isClaiming ? 'Claimmig...' : 'Claim'}
             </button> : <button className='disabled:opacity-60 bg-[#2C91FE] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%]' onClick={open}>Connect wallet</button>}
-            <div className='text-xs font-bold leading-[120%] text-center text-[#A1A1AA]'>This is a disclaimer text to describe the rules of the transaction and what fees are involved.</div>
         </div>
     )
 }
