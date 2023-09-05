@@ -103,7 +103,7 @@ export default function AmountInput({
                         <button className='disabled:opacity-50 p-2 rounded-full bg-[#141414] text-white text-xs h-[30px] flex items-center justify-center' onClick={() => handleSetMax()} disabled={dialogDisabled || Number(ethInputAmount) === maxInputAmountOfETH}>Set max</button>
                     </div>
                 </div>
-                <div className="text-xs text-[#52525B] font-bold leading-[120%]">Your ETH Balance = {ethBalance.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 0 })} ETH</div>
+                <div className="text-xs text-[#52525B] font-bold leading-[120%]">Your ETH Balance = {ethBalance.toLocaleString(undefined, { maximumFractionDigits: 4, minimumFractionDigits: 0 })} ETH</div>
             </InfoTextContainer>
         </div>
     )
