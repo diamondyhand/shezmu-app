@@ -242,9 +242,9 @@ export default function MintGuardianModal({
                         <div className="text-black text-2xl font-extrabold mt-6">
                             Public Sale
                         </div>
-                        <div className="text-[#A1A1AA] font-semibold my-1">
-                            {tokenSaleInfo?.totalShezmuAmount - tokenSaleInfo?.shezmuAmount}{" "}
-                            of {tokenSaleInfo?.totalShezmuAmount} Shezmu left
+                        <div className="text-[#A1A1AA] font-semibold my-1 text-center">
+                            {(tokenSaleInfo?.totalShezmuAmount - tokenSaleInfo?.shezmuAmount).toLocaleString(undefined, { maximumFractionDigits: 4, minimumFractionDigits: 0 })}{" "}
+                            of {tokenSaleInfo?.totalShezmuAmount.toLocaleString(undefined, { maximumFractionDigits: 4, minimumFractionDigits: 0 })} Shezmu left
                         </div>
                         <ProgressBar progressPercentage={progress} />
                         <div className="w-full">
