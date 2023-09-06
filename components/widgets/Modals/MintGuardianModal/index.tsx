@@ -191,7 +191,7 @@ export default function MintGuardianModal({
         if (tokenSaleInfo?.totalShezmuAmount && tokenSaleInfo?.shezmuAmount) {
             const progress =
                 (tokenSaleInfo?.totalShezmuAmount - tokenSaleInfo?.shezmuAmount) /
-                tokenSaleInfo?.totalShezmuAmount;
+                tokenSaleInfo?.totalShezmuAmount * 100;
             setProgress(progress);
         }
     }, [tokenSaleInfo?.totalShezmuAmount, tokenSaleInfo?.shezmuAmount]);
