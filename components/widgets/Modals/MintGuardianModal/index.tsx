@@ -189,9 +189,7 @@ export default function MintGuardianModal({
 
     useEffect(() => {
         if (tokenSaleInfo?.totalShezmuAmount && tokenSaleInfo?.shezmuAmount) {
-            const progress =
-                (tokenSaleInfo?.totalShezmuAmount - tokenSaleInfo?.shezmuAmount) /
-                tokenSaleInfo?.totalShezmuAmount * 100;
+            const progress = tokenSaleInfo?.shezmuAmount / tokenSaleInfo?.totalShezmuAmount * 100;
             setProgress(progress);
         }
     }, [tokenSaleInfo?.totalShezmuAmount, tokenSaleInfo?.shezmuAmount]);
