@@ -4,17 +4,12 @@ import { useGuardianStore } from "@/state/state";
 import { RewardContainer } from "./style";
 // ** constants imports
 import {
-  DappRewardConfigForDesktop,
-  DappRewardConfigForMobile,
+  DappRewardConfig,
 } from "@/components/widgets/Constants/dapp";
-import { useMediaQuery } from "@mui/material";
 
 export default function HoldingSection() {
   const [guardianInfo] = useGuardianStore((state) => [state.guardianInfo]);
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  const DappRewardConfig = isMobile
-    ? DappRewardConfigForMobile
-    : DappRewardConfigForDesktop;
+
   return (
     <RewardContainer>
       <div className="max-w-7xl w-full self-center z-20 grid items-start grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 md:gap-20 my-12 md:my-20">
