@@ -233,8 +233,8 @@ export default function MintTab({
     ) {
       setIsShezmuApproved(
         !(Number(guardianAmount) > 0) ||
-          shezmuAllowance >=
-            Number(guardianAmount) * guardianInfo?.pricePerGuardian
+        shezmuAllowance >=
+        Number(guardianAmount) * guardianInfo?.pricePerGuardian
       );
     }
   }, [
@@ -284,9 +284,8 @@ export default function MintTab({
               <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-6">
                 <input
                   placeholder="0"
-                  className={`text-[32px] font-semibold leading-[102%] ${
-                    inputError ? "border border-red-600" : "border-none"
-                  } outline-none rounded-2xl bg-[#18181B] text-[#F8D044] text-center py-1 w-32`}
+                  className={`text-[32px] font-semibold leading-[102%] ${inputError ? "border border-red-600" : "border-none"
+                    } outline-none rounded-2xl bg-[#18181B] text-[#F8D044] text-center py-1 w-32`}
                   value={guardianAmount}
                   onChange={(e) => handleInputGuardianAmount(e.target.value)}
                 />

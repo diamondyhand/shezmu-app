@@ -7,6 +7,8 @@ const guardianContract = getGuardianContract();
 const shezmuAddress = getShezmuAddress();
 const tokenContract = getERC20TokenContract(shezmuAddress);
 
+console.log(tokenContract)
+
 export const fetchGuardianInfo = async () => {
     if (!tokenContract) return;
     const shezmuDecimals = await tokenContract.read.decimals();

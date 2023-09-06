@@ -9,7 +9,6 @@ export default function Homepage() {
         <DapppageContainer className="dapp_bg relative">
             <Header />
             <MainSection />
-            {/* <Footer /> */}
         </DapppageContainer>
     )
 }

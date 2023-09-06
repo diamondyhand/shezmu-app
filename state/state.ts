@@ -37,7 +37,7 @@ export const useGuardianStore = create<GuardianState & GuardianAction>((set) => 
         set(() => ({ shezmuBalance }))
     },
     async initializeUserInfo() {
-        set(() => ({guardianBalance:0, pendingReward: [0, 0], shezmuBalance: 0}))
+        set(() => ({ guardianBalance: 0, pendingReward: [0, 0], shezmuBalance: 0 }))
     }
 }))
 

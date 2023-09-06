@@ -47,7 +47,7 @@ const useERC20Token = (address: string) => {
   const approve = useCallback(
     async (spender: string, amount: bigint) => {
       if (!tokenContract || !account) return null;
-      const txnHash = await tokenContract.write.approve([spender as `0x${string}`, amount], { account });
+      const txnHash = await (tokenContract as any).write.approve([spender as `0x${string}`, amount], { account });
       return txnHash;
     },
     [tokenContract]

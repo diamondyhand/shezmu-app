@@ -12,48 +12,40 @@ import { erc20ABI } from "wagmi";
 
 export const getTokenSaleContract = () => {
   const walletClient = getWalletClient();
-  if (walletClient) {
-    return getContract({
-      address: getTokenSaleAddress(),
-      abi: TokenSaleABI,
-      publicClient: getPublicClient(),
-      walletClient: walletClient,
-    });
-  }
+  return getContract({
+    address: getTokenSaleAddress(),
+    abi: TokenSaleABI,
+    publicClient: getPublicClient(),
+    walletClient: walletClient as any,
+  }) as any;
 };
 
 export const getShezmuContract = () => {
   const walletClient = getWalletClient();
-  if (walletClient) {
-    return getContract({
-      address: getShezmuAddress(),
-      abi: ShezmuABI,
-      publicClient: getPublicClient(),
-      walletClient: walletClient,
-    });
-  }
+  return getContract({
+    address: getShezmuAddress(),
+    abi: ShezmuABI,
+    publicClient: getPublicClient(),
+    walletClient: walletClient as any,
+  }) as any;
 };
 
 export const getGuardianContract = () => {
   const walletClient = getWalletClient();
-  if (walletClient) {
-    return getContract({
-      address: getGuardianAddress(),
-      abi: GuardianABI,
-      publicClient: getPublicClient(),
-      walletClient: walletClient,
-    });
-  }
+  return getContract({
+    address: getGuardianAddress(),
+    abi: GuardianABI,
+    publicClient: getPublicClient(),
+    walletClient: walletClient as any,
+  }) as any;
 };
 
 export const getERC20TokenContract = (address: string) => {
   const walletClient = getWalletClient();
-  if (walletClient) {
-    return getContract({
-      address: address as `0x${string}`,
-      abi: erc20ABI,
-      publicClient: getPublicClient(),
-      walletClient: walletClient,
-    });
-  }
+  return getContract({
+    address: address as `0x${string}`,
+    abi: erc20ABI,
+    publicClient: getPublicClient(),
+    walletClient: walletClient as any,
+  }) as any;
 };
