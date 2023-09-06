@@ -17,7 +17,7 @@ export default function TokenSelect({ selectedToken, setSelectedToken, tokens }:
     const [feeTokenList, setFeeTokenList] = useState<TokenListTypes[]>([])
 
     useEffect(() => {
-        if (tokens.length > 0 && address) {
+        if (tokens.length > 0 && !tokens.includes('')) {
             (async () => {
                 const feeTokenList = await getUserTokensInfo(tokens, address)
                 setFeeTokenList(feeTokenList)
@@ -42,7 +42,7 @@ export default function TokenSelect({ selectedToken, setSelectedToken, tokens }:
                             <span>({selectedToken.balance.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 0 })})</span>
                         </div>
                         <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                            <Icon icon="icon-park-outline:down" fontSize={16} />
+                            <Icon icon="icon-park-outline:down" fontSize={16} className='text-white' />
                         </span>
                     </Listbox.Button>
                     <Transition

@@ -26,11 +26,11 @@ const useERC20Token = (address: string) => {
     [tokenContract, decimals]
   );
 
-  const getUserBalance = useCallback(async () => {
+  const getUserBalance = async () => {
     if (!tokenContract || !account) return;
     const wei = await tokenContract.read.balanceOf([account as `0x${string}`]);
     setUserBalance(Number(formatUnits(wei as bigint, decimals)));
-  }, [tokenContract, decimals, account]);
+  };
 
   const getAllowance = useCallback(
     async (owner: string, spender: string) => {
@@ -47,15 +47,8 @@ const useERC20Token = (address: string) => {
   const approve = useCallback(
     async (spender: string, amount: bigint) => {
       if (!tokenContract || !account) return null;
-      // const { result } = await tokenContract.simulate.approve(
-      //   [spender as `0x${string}`, amount],
-      //   { account }
-      // );
-      // if (result) {
       const txnHash = await tokenContract.write.approve([spender as `0x${string}`, amount], { account });
       return txnHash;
-      // }
-      // return null;
     },
     [tokenContract]
   );

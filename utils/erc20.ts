@@ -30,7 +30,7 @@ export const getAllowance = async (
 
 export const getUserTokensInfo = async (
   contracts: string[],
-  account: string
+  account: string | undefined
 ) => {
   const publicClient = getPublicClient();
   const tokenNames = await publicClient.multicall({
@@ -47,14 +47,14 @@ export const getUserTokensInfo = async (
       functionName: "decimals",
     })),
   });
-  const tokenBalances = await publicClient.multicall({
+  const tokenBalances = account ? await publicClient.multicall({
     contracts: contracts.map((address) => ({
       address: address as `0x${string}`,
       abi: erc20ABI,
       functionName: "balanceOf",
       args: [account],
     })),
-  });
+  }) : contracts.map((address, index) => ({result: 0}));
   return contracts.map((address, index) => ({
     index: index + 1,
     name: tokenNames[index].result,

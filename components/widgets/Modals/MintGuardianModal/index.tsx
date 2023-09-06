@@ -110,6 +110,7 @@ export default function MintGuardianModal({
             const txnHash = await buy(ethInputAmount.toString());
             const transaction = await publicClient.waitForTransactionReceipt({
                 hash: txnHash || "0x",
+                timeout: 60_000,
             });
             if (transaction.status === "success") {
                 fetchTokenSaleInfo();

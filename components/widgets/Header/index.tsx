@@ -50,7 +50,7 @@ export default function Header() {
             <Stack direction='row' justifyContent='space-between' alignItems='center'>
                 <div className=''>
                     <div className='flex items-center gap-2'>
-                        <Icon icon="ic:round-menu" fontSize={32} className='cursor-pointer block lg:hidden' onClick={() => setOpenDrawer(true)} />
+                        <Icon icon="ic:round-menu" fontSize={32} className='cursor-pointer block lg:hidden text-white' onClick={() => setOpenDrawer(true)} />
                         <LogoSVG className='hidden sm:block' />
                         <LogowithoutTextSVG className='block sm:hidden' />
                     </div>
