@@ -9,6 +9,6 @@ export default {
   },
   guardian: {
     5: "0xbf02324b700c7A93CEbBf1854559CcA322D5587C",
-    1: "0x33972a4cf6c4c832ee4fca99a5cfA046758Fca35",
+    1: "0xFE6c938824C5059edB03579c8DE26Ca095933C97",
   },
 };
