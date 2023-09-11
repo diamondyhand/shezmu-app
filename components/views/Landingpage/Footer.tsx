@@ -1,10 +1,20 @@
 // ** constants imports
-import { RouterLinkConfig } from "@/components/widgets/Constants/main"
+import { useEffect, useState } from 'react';
+import { DappRouterLinkConfig, IndexRouterLinkConfig } from "@/components/widgets/Constants/main"
 // ** style imports
 import { FooterContainer, Divider } from "./style"
 import LogoSVG from "@/components/widgets/SVG/Logo"
 
 export default function Footer() {
+    const [RouterLinkConfig, setRouterLinkConfig] = useState(IndexRouterLinkConfig);
+    useEffect(() => {
+        if(window.location.pathname == "/dapp") {
+            setRouterLinkConfig(DappRouterLinkConfig);
+        } else {
+            setRouterLinkConfig(IndexRouterLinkConfig);
+        }
+    })    
+
     return (
         <FooterContainer>
             <div className="max-w-7xl w-full self-center flex flex-wrap mt-20 z-20 px-5 md:px-12 lg:px-16 xl:px-0 gap-y-6">
