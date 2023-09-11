@@ -1,13 +1,24 @@
 import { RouterLinkConfigTypes } from "./type"
 
-export const RouterLinkConfig: RouterLinkConfigTypes[] = [
+export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
-        title: 'Public sale',
-        link: '/'
+        title: 'Main',
+        link: 'dapp'
     },
     {
-        title: 'Guardians',
-        link: 'dapp'
+        title: 'OpenSea',
+        link: 'https://opensea.io/collection/shezmu-guardian'
+    },
+    {
+        title: 'Social',
+        link: ''
+    }
+]
+
+export const DappRouterLinkConfig: RouterLinkConfigTypes[] = [
+    {
+        title: 'OpenSea',
+        link: 'https://opensea.io/collection/shezmu-guardian'
     }
 ]
 

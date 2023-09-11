@@ -3,7 +3,7 @@ import Drawer from '@mui/material/Drawer';
 // ** npm module
 import { Icon } from '@iconify/react';
 // ** contants imports
-import { RouterLinkConfig } from '../Constants/main';
+import { IndexRouterLinkConfig } from '../Constants/main';
 import LogowithoutTextSVG from '../SVG/LogowithoutText';
 import Link from 'next/link';
 
@@ -35,7 +35,7 @@ export default function DrawerSection({
                     </button>
                 </div>
                 <div className='flex flex-col px-4 gap-6 py-6 z-20 justify-center h-full'>
-                    {RouterLinkConfig.map(item => (
+                    {IndexRouterLinkConfig.map(item => (
                         <Link href={item.link} key={item.title} onClick={toggleDrawer(false)}>
                             <div className='font-[Newsreader] text-[44px] font-medium leading-[95%] cursor-pointer'>
                                 {item.title}

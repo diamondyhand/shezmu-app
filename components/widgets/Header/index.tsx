@@ -13,7 +13,7 @@ import LogoSVG from '../SVG/Logo';
 import LogowithoutTextSVG from '../SVG/LogowithoutText';
 // ** style imports
 import { HeaderContainer } from "./style"
-import { RouterLinkConfig } from '../Constants/main';
+import { IndexRouterLinkConfig, DappRouterLinkConfig } from '../Constants/main';
 import { useNetwork } from 'wagmi';
 import { getWalletClient } from '@/utils/viemHelper';
 import { CHAIN_ID } from '@/config/constants/network';
@@ -21,6 +21,14 @@ import { CHAIN_ID } from '@/config/constants/network';
 const manrope = Manrope({ subsets: ['latin'] })
 
 export default function Header() {
+    const [RouterLinkConfig, setRouterLinkConfig] = useState(IndexRouterLinkConfig);
+    useEffect(() => {
+        if(window.location.pathname == "/dapp") {
+            setRouterLinkConfig(DappRouterLinkConfig);
+        } else {
+            setRouterLinkConfig(IndexRouterLinkConfig);
+        }
+    })    
     // react hook imports
     const [openDrawer, setOpenDrawer] = useState(false);
     const { chain } = useNetwork();
@@ -57,7 +65,7 @@ export default function Header() {
                 </div>
                 <Stack direction='row' alignItems='center' gap={6}>
                     <div className='hidden md:flex items-center gap-6'>
-                        {RouterLinkConfig.map(item => (
+                        {RouterLinkConfig?.map(item => (
                             <Link href={item.link} key={item.title}>
                                 <Stack fontSize={14} className='cursor-pointer text-white font-bold' direction='row' alignItems='center' gap={1}>
                                     {item.title}
