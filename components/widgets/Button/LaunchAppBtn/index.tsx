@@ -9,9 +9,11 @@ interface LaunchAppBtnProps {
 
 export default function LaunchAppBtn(props: LaunchAppBtnProps) {
     return (
-        <LaunchAppButton {...props}>
-            Launch app
-            <Icon icon="teenyicons:top-right-outline" className='text-base sm:text-xl' />
-        </LaunchAppButton>
+        <a href='/dapp'>
+            <LaunchAppButton {...props}>
+                Launch app
+                <Icon icon="teenyicons:top-right-outline" className='text-base sm:text-xl' />
+            </LaunchAppButton>
+        </a>
     )
 }
