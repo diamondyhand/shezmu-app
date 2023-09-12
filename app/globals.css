@@ -45,8 +45,7 @@ body {
 .landing_bg {
   background: url(../public/image/landing_bg.png), lightgray 50%;
   background-repeat: no-repeat;
-  background-size: 130% cover;
-  background-position-y: -250px;
+  background-size: cover;
   min-height: 1200px;
 }
 
