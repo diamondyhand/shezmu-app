@@ -3,7 +3,7 @@ import { RouterLinkConfigTypes } from "./type"
 export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
         title: 'Main',
-        link: 'dapp'
+        link: '/dapp'
     },
     {
         title: 'OpenSea',

@@ -23,6 +23,7 @@ const manrope = Manrope({ subsets: ['latin'] })
 export default function Header() {
     const [RouterLinkConfig, setRouterLinkConfig] = useState(IndexRouterLinkConfig);
     useEffect(() => {
+        console.log("caller is ");
         if(window.location.pathname == "/dapp") {
             setRouterLinkConfig(DappRouterLinkConfig);
         } else {
@@ -59,13 +60,17 @@ export default function Header() {
                 <div className=''>
                     <div className='flex items-center gap-2'>
                         <Icon icon="ic:round-menu" fontSize={32} className='cursor-pointer block lg:hidden text-white' onClick={() => setOpenDrawer(true)} />
-                        <LogoSVG className='hidden sm:block' />
-                        <LogowithoutTextSVG className='block sm:hidden' />
+                        <a href="/">
+                            <div>
+                                <LogoSVG className='hidden sm:block' />
+                                <LogowithoutTextSVG className='block sm:hidden' />
+                            </div>
+                        </a>                   
                     </div>
                 </div>
                 <Stack direction='row' alignItems='center' gap={6}>
                     <div className='hidden md:flex items-center gap-6'>
-                        {RouterLinkConfig?.map(item => (
+                        {IndexRouterLinkConfig?.map(item => (
                             <Link href={item.link} key={item.title}>
                                 <Stack fontSize={14} className='cursor-pointer text-white font-bold' direction='row' alignItems='center' gap={1}>
                                     {item.title}
