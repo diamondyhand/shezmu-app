@@ -8,12 +8,32 @@ export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
         title: 'OpenSea',
         link: 'https://opensea.io/collection/shezmu-guardian'
+    },    
+]
+
+export const MobileRouterLinkConfig: RouterLinkConfigTypes[] = [
+    {
+        title: 'Main',
+        link: '/dapp'
     },
     {
-        title: 'Social',
-        link: ''
-    }
+        title: 'OpenSea',
+        link: 'https://opensea.io/collection/shezmu-guardian'
+    },  
+    {
+        title: 'Telegram',
+        link: 'https://t.me/shezmueth'
+    },    
+    {
+        title: 'Twitter',
+        link: 'https://twitter.com/ShezmuTech'
+    },    
+    {
+        title: 'Gitbook',
+        link: 'https://shezmu.gitbook.io/shezmu/introduction/welcome-to-shezmu'
+    }  
 ]
+
 
 export const DappRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
