@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import WagmiProvider from './WagmiProvider'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,6 +21,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head>
+        <title>Shezmu App</title>
+        <meta name='Shezmu App' content='The Altar or Shezmu Awaits' />
+      </Head>
+
       <WagmiProvider>
         <body className={inter.className}>{children}</body>
       </WagmiProvider>
