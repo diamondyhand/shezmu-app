@@ -20,22 +20,22 @@ export default function Footer() {
             
             <div className="max-w-7xl w-full self-center flex flex-wrap mt-20 sm:mt-12 z-20 px-5 md:px-12 lg:px-16 xl:px-0">              
                 <div className="w-full sm:w-1/2 lg:w-1/4">
-                    <a href='/dapp'>
-                        <div className={`text-sm text-[#A1A1AA] sm:font-bold cursor-pointer`}>Main</div>
+                    <a href='/dapp' target="_self">
+                        <div className={`text-sm text-[#A1A1AA] sm:font-bold cursor-pointer`}>DApp</div>
                     </a>
-                    <a href='https://opensea.io/collection/shezmu-guardian'>
+                    <a href='https://opensea.io/collection/shezmu-guardian' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] sm:font-bold cursor-pointer`}>Opensea</div>
                     </a>
                 </div>
                 <div className="w-full sm:w-1/2 lg:w-1/4">
                     <div className={`text-sm text-[#A1A1AA] sm:font-bold hidden sm:block cursor-pointer`}>Socials</div>
-                    <a href='https://t.me/shezmueth'>
+                    <a href='https://t.me/shezmueth' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] cursor-pointer`}>Telegram</div>
                     </a>
-                    <a href='https://twitter.com/ShezmuTech'>
+                    <a href='https://twitter.com/ShezmuTech' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] cursor-pointer`}>Twitter</div>
                     </a>
-                    <a href='https://shezmu.gitbook.io/shezmu/introduction/welcome-to-shezmu'>
+                    <a href='https://shezmu.gitbook.io/shezmu/introduction/welcome-to-shezmu' target='_blank'>
                         <div className={`text-sm mt-4 mb-16 sm:mb-0 text-[#A1A1AA] cursor-pointer`}>Gitbook</div>
                     </a>
                 </div>

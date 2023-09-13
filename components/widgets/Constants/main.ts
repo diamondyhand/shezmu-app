@@ -2,7 +2,7 @@ import { RouterLinkConfigTypes } from "./type"
 
 export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
-        title: 'Main',
+        title: 'DApp',
         link: '/dapp'
     },
     {
@@ -13,7 +13,7 @@ export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [
 
 export const MobileRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
-        title: 'Main',
+        title: 'DApp',
         link: '/dapp'
     },
     {

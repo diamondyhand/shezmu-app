@@ -30,13 +30,13 @@ export default function DrawerSection({
                         <Icon icon="ic:round-menu" fontSize={32} className='cursor-pointer block lg:hidden' onClick={toggleDrawer(false)} />                        
                         <WhiteLogowithoutTextSVG />
                     </div>
-                    <button className='bg-[#FADB6D] hover:bg-[#E9B708] transition-all p-2 rounded-xl text-black' onClick={toggleDrawer(false)}>
+                    <button className='bg-white hover:bg-white transition-all p-2 rounded-xl text-black' onClick={toggleDrawer(false)}>
                         <Icon icon="ic:round-close" width={24} height={24} />
                     </button>
                 </div>
                 <div className='flex flex-col px-4 gap-6 py-6 z-20 mt-8 h-full'>
                     {MobileRouterLinkConfig.map(item => (
-                        <Link href={item.link} key={item.title} onClick={toggleDrawer(false)}>
+                        <Link href={item.link} key={item.title} onClick={toggleDrawer(false)} target={item.title == "DApp" ? "_self": "_blank"}>
                             <div className='font-[Newsreader] text-[24px] font-medium leading-[95%] cursor-pointer'>
                                 {item.title}
                                 <div className='flex flex-wrap items-center'>
