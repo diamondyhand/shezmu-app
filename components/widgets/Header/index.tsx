@@ -74,7 +74,7 @@ export default function Header() {
                 <Stack direction='row' alignItems='center' gap={6}>
                     <div className='hidden md:flex items-center gap-6'>
                         {RouterLinkConfig?.map(item => (
-                            <Link href={item.link} key={item.title}>
+                            <Link href={item.link} key={item.title} target={item.title == "DApp" ? "_self" : "_blank"}> 
                                 <Stack fontSize={14} className='cursor-pointer text-white font-bold' direction='row' alignItems='center' gap={1}>
                                     {item.title}
                                     {item.subTitles && <Icon icon="mingcute:down-line" />}
