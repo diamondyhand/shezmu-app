@@ -59,7 +59,7 @@ export default function Footer() {
                             </a>
                         </div>
                     </div>
-                    <div className="text-[#D1B03A]">© 2077 Shezmu. All rights reserved.</div>
+                    <div className="text-[#D1B03A]">© 2023 Shezmu. All rights reserved.</div>
                 </div>
             </div>
         </FooterContainer>
