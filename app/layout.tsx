@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Shezmu App',
-  description: 'The Altar or Shezmu Awaits',
+  description: 'The Altar of Shezmu Awaits',
   icons: {
     icon: { url: '/image/logo_without_text.png' }
   }
@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <Head>
         <title>Shezmu App</title>
-        <meta name='Shezmu App' content='The Altar or Shezmu Awaits' />
+        <meta name='Shezmu App' content='The Altar of Shezmu Awaits' />
       </Head>
 
       <WagmiProvider>
