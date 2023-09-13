@@ -18,6 +18,8 @@ import { useNetwork } from 'wagmi';
 import { getWalletClient } from '@/utils/viemHelper';
 import { CHAIN_ID } from '@/config/constants/network';
 import SocialLinkDropDown from '../DropDown/SocialLinkDropDown';
+import LaunchAppBtn from '../Button/LaunchAppBtn';
+import LaunchMenuAppBtn from '../Button/LaunchMenuAppBtn';
 
 const manrope = Manrope({ subsets: ['latin'] })
 
@@ -32,6 +34,7 @@ export default function Header() {
             setRouterLinkConfig(IndexRouterLinkConfig);
         }
     })    
+
     // react hook imports
     const [openDrawer, setOpenDrawer] = useState(false);
     const { chain } = useNetwork();
@@ -71,7 +74,7 @@ export default function Header() {
                     </div>
                 </div>
                 
-                <Stack direction='row' alignItems='center' gap={6}>
+                <Stack direction='row' alignItems='center' gap={3}>
                     <div className='hidden md:flex items-center gap-6'>
                         {RouterLinkConfig?.map(item => (
                             <Link href={item.link} key={item.title} target={item.title == "DApp" ? "_self" : "_blank"}> 
@@ -84,8 +87,8 @@ export default function Header() {
                         {
                             isDapp == false ? <SocialLinkDropDown /> : <></>
                         }
-                    </div>
-                    <ConnectWalletBtn />
+                    </div>                    
+                    { isDapp ? <ConnectWalletBtn /> : <LaunchMenuAppBtn /> }                    
                 </Stack>
             </Stack>
             <DrawerSection openDrawer={openDrawer} toggleDrawer={toggleDrawer} />

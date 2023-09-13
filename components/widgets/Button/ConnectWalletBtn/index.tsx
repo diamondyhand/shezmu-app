@@ -4,7 +4,7 @@ import { Manrope } from 'next/font/google'
 import React, { useEffect } from 'react'
 // ** npm module
 import { useWeb3Modal } from '@web3modal/react'
-import { useAccount } from 'wagmi'
+import { useAccount, useDisconnect } from 'wagmi'
 import { Icon } from '@iconify/react';
 // ** components imports
 import { WalletConnectBtn } from '../style'
@@ -15,14 +15,39 @@ export default function ConnectWalletBtn() {
     // hooks imports
     const { open } = useWeb3Modal();
     const { address, isConnected } = useAccount();
+    const { disconnect } = useDisconnect();
+
+    const [loading, setLoading] = React.useState<boolean>(false);
+
     // react hooks imports
     const [walletConnected, setWalletConnected] = React.useState<boolean>(false)
+
+    async function onOpen() {
+        setLoading(true);
+        await open();
+        setLoading(false);
+    }
+
+    function onClick() {
+        if (isConnected) {
+        //   disconnect();
+        } else {
+          onOpen();
+        }
+    }
+    
+    
+
     // useEffects
     useEffect(() => {
         if (isConnected != undefined) {
             setWalletConnected(isConnected)
+            if(isConnected == true && window.location.pathname == "/") {                
+                // window.location.href = "/dapp";
+            }
         }
     }, [isConnected])
+
 
     return (
         <WalletConnectBtn className={manrope.className} onClick={open} isConnected={walletConnected}>
