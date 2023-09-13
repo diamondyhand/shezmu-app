@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { Stack } from '@mui/material';
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -12,10 +13,14 @@ export default function SocialLinkDropDown() {
     <>
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 px-3 py-2 text-sm font-semibold text-white">
+        <Menu.Button className='cursor-pointer text-white font-bold fontSize-[14px] items-center flex gap-x-1.5'>
           Socials
           <ChevronDownIcon className="-mr-1 h-5 w-5 text-white" aria-hidden="true" />
+
         </Menu.Button>
+        {/* <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 font-semibold text-white items-center" >
+          Socials
+        </Menu.Button> */}
       </div>
 
       <Transition
