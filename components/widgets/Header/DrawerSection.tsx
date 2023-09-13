@@ -48,6 +48,14 @@ export default function DrawerSection({
                         </Link>
                     ))}
                 </div>
+                <div className='px-4 gap-6 py-6'>                            
+                    <a href='https://etherscan.io/address/0x5fe72ed557d8a02fff49b3b826792c765d5ce162'>
+                        <div className="text-[#A1A1AA]">Shezmu contract</div>
+                    </a>
+                    <a href='https://etherscan.io/address/0xFE6c938824C5059edB03579c8DE26Ca095933C97'>
+                        <div className="text-[#A1A1AA] mt-3">Guardian contract</div>
+                    </a>
+                </div>
             </div>
         </Drawer>
     )
