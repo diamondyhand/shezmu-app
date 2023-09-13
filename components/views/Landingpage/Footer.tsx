@@ -51,10 +51,10 @@ export default function Footer() {
                         </a>
                         <div className='flex'>
                             
-                            <a href='https://etherscan.io/address/0x5fe72ed557d8a02fff49b3b826792c765d5ce162'>
+                            <a href='https://etherscan.io/address/0x5fe72ed557d8a02fff49b3b826792c765d5ce162' target='_blank'>
                                 <div className="text-[#A1A1AA] sm:pl-5">Shezmu contract</div>
                             </a>
-                            <a href='https://etherscan.io/address/0xFE6c938824C5059edB03579c8DE26Ca095933C97'>
+                            <a href='https://etherscan.io/address/0xFE6c938824C5059edB03579c8DE26Ca095933C97' target='_blank'>
                                 <div className="text-[#A1A1AA] pl-5">Guardian contract</div>
                             </a>
                         </div>
