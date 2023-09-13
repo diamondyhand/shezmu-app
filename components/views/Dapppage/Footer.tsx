@@ -28,7 +28,7 @@ export default function Footer() {
                                 ))}
                             </div>
                         </div>
-                        <span className='text-[#ffde6a] text-base'>&#x40; 2077 Shezmu. All rights reserved.</span>
+                        <span className='text-[#ffde6a] text-base'>&#x40; 2023 Shezmu. All rights reserved.</span>
                     </Stack>
                 </div>
                 <div className='sm:hidden py-8 w-full flex flex-col items-start'>
@@ -36,7 +36,7 @@ export default function Footer() {
                         <Image src="/image/logo.png" alt="logo" draggable={false} width={118} height={24} />
                     </div>
                     <div className='mt-4'>
-                        <span className='text-[#ffde6a] text-base'>&#x40; 2077 Shezmu. All rights reserved.</span>
+                        <span className='text-[#ffde6a] text-base'>&#x40; 2023 Shezmu. All rights reserved.</span>
                     </div>
                 </div>
             </div>

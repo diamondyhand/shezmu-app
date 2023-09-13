@@ -13,14 +13,29 @@ import LogoSVG from '../SVG/Logo';
 import LogowithoutTextSVG from '../SVG/LogowithoutText';
 // ** style imports
 import { HeaderContainer } from "./style"
-import { RouterLinkConfig } from '../Constants/main';
+import { IndexRouterLinkConfig, DappRouterLinkConfig } from '../Constants/main';
 import { useNetwork } from 'wagmi';
 import { getWalletClient } from '@/utils/viemHelper';
 import { CHAIN_ID } from '@/config/constants/network';
+import SocialLinkDropDown from '../DropDown/SocialLinkDropDown';
+import LaunchAppBtn from '../Button/LaunchAppBtn';
+import LaunchMenuAppBtn from '../Button/LaunchMenuAppBtn';
+import { Menu } from '@headlessui/react';
 
 const manrope = Manrope({ subsets: ['latin'] })
 
 export default function Header() {
+    const [RouterLinkConfig, setRouterLinkConfig] = useState(IndexRouterLinkConfig);
+    const [isDapp, setIsDapp] = useState(false);
+    useEffect(() => {
+        if(window.location.pathname == "/dapp") {
+            setIsDapp(true);
+            setRouterLinkConfig(DappRouterLinkConfig);
+        } else {
+            setRouterLinkConfig(IndexRouterLinkConfig);
+        }
+    })    
+
     // react hook imports
     const [openDrawer, setOpenDrawer] = useState(false);
     const { chain } = useNetwork();
@@ -51,22 +66,32 @@ export default function Header() {
                 <div className=''>
                     <div className='flex items-center gap-2'>
                         <Icon icon="ic:round-menu" fontSize={32} className='cursor-pointer block lg:hidden text-white' onClick={() => setOpenDrawer(true)} />
-                        <LogoSVG className='hidden sm:block' />
-                        <LogowithoutTextSVG className='block sm:hidden' />
+                        <a href="/">
+                            <div>
+                                <LogoSVG className='hidden sm:block' />
+                                <LogowithoutTextSVG className='block sm:hidden' />
+                            </div>
+                        </a>                   
                     </div>
                 </div>
-                <Stack direction='row' alignItems='center' gap={6}>
+                
+                <Stack direction='row' alignItems='center' gap={3}>
                     <div className='hidden md:flex items-center gap-6'>
-                        {RouterLinkConfig.map(item => (
-                            <Link href={item.link} key={item.title}>
-                                <Stack fontSize={14} className='cursor-pointer text-white font-bold' direction='row' alignItems='center' gap={1}>
-                                    {item.title}
-                                    {item.subTitles && <Icon icon="mingcute:down-line" />}
-                                </Stack>
+                        {RouterLinkConfig?.map(item => (
+                            <Link href={item.link} key={item.title} target={item.title == "DApp" ? "_self" : "_blank"}> 
+                                <Menu as="div" className="relative inline-block text-left">
+                                    <div className='cursor-pointer text-white font-bold fontSize-[14px] items-center gap-1'>
+                                        {item.title}
+                                        {item.subTitles && <Icon icon="mingcute:down-line" />}
+                                    </div>
+                                </Menu>
                             </Link>
                         ))}
-                    </div>
-                    <ConnectWalletBtn />
+                        {
+                            isDapp == false ? <SocialLinkDropDown /> : <></>
+                        }
+                    </div>                    
+                    { isDapp ? <ConnectWalletBtn /> : <LaunchMenuAppBtn /> }                    
                 </Stack>
             </Stack>
             <DrawerSection openDrawer={openDrawer} toggleDrawer={toggleDrawer} />

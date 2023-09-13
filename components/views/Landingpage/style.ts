@@ -17,7 +17,7 @@ export const QuoteContainer = tw.div`
 `
 
 export const BannerContainer = tw.div`
-    flex flex-col
+    flex flex-col 
 `
 
 export const FooterContainer = tw.div`

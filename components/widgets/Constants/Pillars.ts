@@ -6,12 +6,12 @@ import { PillarsConfigTypes } from "./type";
 export const PillarsConfig: PillarsConfigTypes[] = [
     {
         title: 'Scarcity',
-        description: 'Please add "Scarcity is at the core at any value. Therefore to build community value, Shezmu is designed to be scarce',
+        description: 'Scarcity is at the core at any value. Therefore to build community value, Shezmu is designed to be scarce',
         icon: ScarcitySVG
     },
     {
         title: 'Stability',
-        description: 'Please add "The structure of Shezmu’s tokenomic incentivizes long term stability through multiple unique mechanisms developed by the Shezmu Team',
+        description: 'The structure of Shezmu’s tokenomic incentivizes long term stability through multiple unique mechanisms developed by the Shezmu Team',
         icon: StabilitySVG
     },
     {
