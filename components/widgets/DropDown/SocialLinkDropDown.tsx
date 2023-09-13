@@ -16,11 +16,7 @@ export default function SocialLinkDropDown() {
         <Menu.Button className='cursor-pointer text-white font-bold fontSize-[14px] items-center flex gap-x-1.5'>
           Socials
           <ChevronDownIcon className="-mr-1 h-5 w-5 text-white" aria-hidden="true" />
-
-        </Menu.Button>
-        {/* <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 font-semibold text-white items-center" >
-          Socials
-        </Menu.Button> */}
+        </Menu.Button>    
       </div>
 
       <Transition
