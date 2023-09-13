@@ -33,6 +33,7 @@ export default function SocialLinkDropDown() {
               {({ active }) => (
                 <a
                   href="https://t.me/shezmueth"
+                  target='_blank'
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-white',
                     'block px-4 py-2 text-sm'
@@ -46,6 +47,7 @@ export default function SocialLinkDropDown() {
               {({ active }) => (
                 <a
                   href="https://twitter.com/ShezmuTech"
+                  target='_blank'
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-white',
                     'block px-4 py-2 text-sm'
@@ -60,6 +62,7 @@ export default function SocialLinkDropDown() {
                 {({ active }) => (
                   <a
                     href='https://shezmu.gitbook.io/shezmu/introduction/welcome-to-shezmu'
+                    target='_blank'
                     className={classNames(
                       active ? 'bg-gray-100 text-gray-900' : 'text-white',
                       'block w-full px-4 py-2 text-left text-sm'
