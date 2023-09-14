@@ -1,5 +1,5 @@
 // ** react imports
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 // ** wagmi imports
 import { useAccount } from "wagmi";
 // ** web3 module imports
@@ -63,6 +63,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
   const [guardianData, setGuardianData] = useState(defaultGuardianData);
   // state
   const [isSending, setIsSending] = useState(false);
+  const [addressInputError, setAddressInputError] = useState("");
   const [inputError, setInputError] = useState("");
   const [toAddr, setToAddr] = useState("");
   const [toAmount, setToAmount] = useState("0");
@@ -73,10 +74,32 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
 
   // callbacks
   const handleSend = useCallback(() => {}, []);
+  const validateAddress = (address: string) => {
+    // Ethereum address regex pattern
+    const addressRegex = /^0x[0-9a-fA-F]{40}$/;
+    return addressRegex.test(address);
+  };
+
   const handleInputToAddr = useCallback((addr: string) => {
+    if (!validateAddress(addr)) {
+      setAddressInputError(
+        `Wallet invalid.`
+      );
+    } else {
+      setAddressInputError("");
+    }
+
     setToAddr(addr);
   }, []);
+
   const handleInputToAmount = useCallback((amount: string) => {
+    if (Number(amount) > guardianBal) {
+      setInputError(
+        `You can't split Guardian than ${guardianBal}.`
+      );
+    } else {
+      setInputError("");
+    }
     setToAmount(amount);
   }, []);
 
@@ -97,7 +120,11 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
     }
     setGuardianData(Datas)
   }, [])
-  
+
+  useEffect(() => {
+    updateGuardianList(Math.floor(Number(toAmount)));
+  }, [toAmount])
+
   const isSendBtnDisabled = !isConnected;
 
   return (
