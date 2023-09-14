@@ -31,10 +31,36 @@ interface SplitTabProps {
     vizierBal: number;
     pharaohBal: number;
 }
-
+const defaultGuardianData = [
+  {
+    name: 'Craftsman',
+    amount: 0,
+  },
+  {
+    name: 'Scribe',
+    amount: 0,
+  },
+  {
+    name: 'Priest',
+    amount: 0,
+  },
+  {
+    name: 'Noble',
+    amount: 0,
+  },
+  {
+    name: 'Vizier',
+    amount: 0,
+    value: 50
+  },
+  {
+    name: 'Pharaoh',
+    amount: 0,
+  }
+];
 export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scribeBal, priestBal, nobleBal, vizierBal, pharaohBal  }: SplitTabProps) {
   const SIZES = [1, 5, 10, 25, 50, 100];
-
+  const [guardianData, setGuardianData] = useState(defaultGuardianData);
   // state
   const [isSending, setIsSending] = useState(false);
   const [inputError, setInputError] = useState("");
