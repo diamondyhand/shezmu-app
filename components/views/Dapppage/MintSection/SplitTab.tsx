@@ -107,6 +107,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   };
 
   const handleInputToAddr = useCallback((addr: string) => {
+    console.log("validateAddress(addr) ", addr, validateAddress(addr));
     if(addr.length > 42) {
       setAddressInputError(
         `Invalid address.`
@@ -115,6 +116,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
       setAddressInputError(
         `Invalid address.`
       );
+      
     } else {
       setAddressInputError("");
     }
@@ -304,7 +306,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
         <div className={paragraphBg}>
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center">
             <div className={smallText}>To (which address)</div>
-            <div className="w-full lg:w-6/6 flex flex-col sm:mt-0 mt-1">
+            <div className="w-full lg:w-6/6 flex flex-col sm:mt-0 mt-1 sm:ml-[8px]">
               <input
                 placeholder="0x000..."
                 className={`text-[24px] ${
