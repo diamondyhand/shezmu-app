@@ -66,7 +66,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
   const [addressInputError, setAddressInputError] = useState("");
   const [inputError, setInputError] = useState("");
   const [toAddr, setToAddr] = useState("");
-  const [toAmount, setToAmount] = useState("0");
+  const [toAmount, setToAmount] = useState("1");
 
   // hooks
   const { address, isConnected } = useAccount();
@@ -93,14 +93,19 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
   }, []);
 
   const handleInputToAmount = useCallback((amount: string) => {
-    if (Number(amount) > guardianBal) {
-      setInputError(
-        `You can't split Guardian than ${guardianBal}.`
-      );
-    } else {
-      setInputError("");
+    const regex = /^(\d+|0)?$/;
+    if (regex.test(amount)) {
+      setToAmount(amount);
+      if (
+        Number(amount) > guardianBal
+      ) {
+        setInputError(
+          `You can't send guardians than ${guardianBal}.`
+        );
+        } else {
+        setInputError("");
+      }
     }
-    setToAmount(amount);
   }, []);
 
   const updateGuardianList = useCallback((amount: number) => {
@@ -211,13 +216,13 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
               <input
                 placeholder="0x000..."
                 className={`text-[24px] ${
-                  inputError ? "border border-red-600" : "border-none"
+                  addressInputError ? "border border-red-600" : "border-none"
                 } outline-none rounded-2xl bg-[#18181B] text-white px-4 py-1 w-full`}
                 value={toAddr}
                 onChange={(e) => handleInputToAddr(e.target.value)}
               />
-              {inputError !== "" && (
-                <div className="text-xs text-red-600">{inputError}</div>
+              {addressInputError !== "" && (
+                <div className="text-xs text-red-600">{addressInputError}</div>
               )}
             </div>
           </div>
