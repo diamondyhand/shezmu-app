@@ -50,7 +50,6 @@ const defaultGuardianData = [
   {
     name: 'Vizier',
     amount: 0,
-    value: 50
   },
   {
     name: 'Pharaoh',
@@ -146,6 +145,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
       totalAmount = totalAmount % SIZES[index];
     }
     setGuardianData(Datas)
+    console.log("datas is ", Datas);
   }, [])
 
   const handleSplit = async (to: string, amount: string) => {
@@ -294,11 +294,11 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
           </div>
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center text-white">
             <div className={smallText}>Guardians to send</div>
-            <div className="flex flex-row items-start gap-12 text-lg">
+            <div className="grid sm:flex flex-row items-start gap-5 text-lg">
             {guardianData.map((item) => {
               if(item.amount) {
                 return (
-                  <div className="flex flex-row items-center" key={item.amount}>
+                  <div className="flex flex-row items-center" key={item.name}>
                   <div>{item.name}:&nbsp;</div>
                   <div className="text-2xl pl-[10px]">{item.amount}</div>
                 </div>
