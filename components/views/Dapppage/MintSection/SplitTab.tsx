@@ -73,18 +73,15 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
     state.getPendingReward,
   ]);
 
-
-  const SIZES = [1, 5, 10, 25, 50, 100];
-  const [guardianData, setGuardianData] = useState(defaultGuardianData);
   const [guardianList, setGuardianList] = useState([0, 0, 0, 0, 0, 0]);
   // state
   const [isSending, setIsSending] = useState(false);
   const [isSplitting, setIsSplitting] = usePendingStore((state) => [state.isSplitting, state.setIsSplitting])
-
+  const [isDisabledSplit, setIsDisabledSplit] = useState(true);
   const [addressInputError, setAddressInputError] = useState("");
   const [inputError, setInputError] = useState("");
   const [toAddr, setToAddr] = useState("");
-  const [toAmount, setToAmount] = useState("1");
+  const [toAmount, setToAmount] = useState("0");
   const publicClient = getPublicClient();
 
   const [craftsmanBal, setCraftsmanBal] = useState(0);
@@ -112,7 +109,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   const handleInputToAddr = useCallback((addr: string) => {
     if (!validateAddress(addr)) {
       setAddressInputError(
-        `Wallet invalid.`
+        `Invalid address.`
       );
     } else {
       setAddressInputError("");
@@ -123,14 +120,13 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
 
   const handleInputToAmount = useCallback((amount: string) => {
     const regex = /^(\d+|0)?$/;
-    console.log("guardianData", guardianData, defaultGuardianData);
     if (regex.test(amount)) {
       setToAmount(amount);
       if (
         Number(amount) > guardianBal
       ) {
         setInputError(
-          `You can't send guardians than ${guardianBal}.`
+          `Exceeds your guardians.`
         );
         } else {
         setInputError("");
@@ -154,7 +150,6 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
       totalAmount = totalAmount % SIZES[index];
     }
     setGuardianList(list);
-    console.log("guardianList is ", list);
   }, [])
 
   const updateTotalGuardianList = useCallback((amount: number) => {
@@ -180,7 +175,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
     setPharaohBal(Number(newDatas[5].amount))
   }, [])
 
-
+  
   const handleSplit = async (to: string, amount: string) => {
     if (
       !guardianAddress ||
@@ -202,7 +197,6 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
       }
       setIsSplitting(false);
     } catch (err) {
-      console.log("Err ==> ", err);
       setIsSplitting(false);
     }
   };
@@ -212,11 +206,17 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   })
 
   useEffect(() => {
-    console.log('lost is ', guardianList);
+    if (validateAddress(toAddr) && Number(toAmount) > 0 && Number(toAmount) < guardianBal) {
+      setIsDisabledSplit(false);
+    } 
+  }, [toAddr, toAmount, guardianBal])
+
+  useEffect(() => {
     updateGuardianList(Math.floor(Number(toAmount)));
   }, [toAmount])
 
   const isSendBtnDisabled = !isConnected;
+  // console.log('isToAddress is ', isToAddress, isToAmount);
 
   return (
     <div className="flex flex-col gap-8">
@@ -379,7 +379,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
       </div>
       {isConnected ? (
         <button
-          disabled={isSendBtnDisabled}
+          disabled={isSendBtnDisabled || isDisabledSplit}
           className="disabled:opacity-50 bg-[#2C91FE] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%]"
           onClick={() => handleSplit(toAddr, toAmount)}
         >
