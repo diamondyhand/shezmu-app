@@ -114,8 +114,8 @@ export default function RewardTab({
       <div className="flex flex-col gap-4">
         <div className="flex flex-col sm:flex-row items-start">
           <div className={`${smallText} w-24 pr-0`}>Your guardians</div>
-          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full">
-          {craftsmanBal > 0 && (
+          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full sm:pl-[28px]">
+            {craftsmanBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
                   <GuardianImage name='craftsmen' />
