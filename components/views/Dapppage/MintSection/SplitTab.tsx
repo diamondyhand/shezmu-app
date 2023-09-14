@@ -76,6 +76,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
 
   const SIZES = [1, 5, 10, 25, 50, 100];
   const [guardianData, setGuardianData] = useState(defaultGuardianData);
+  const [guardianList, setGuardianList] = useState([0, 0, 0, 0, 0, 0]);
   // state
   const [isSending, setIsSending] = useState(false);
   const [isSplitting, setIsSplitting] = usePendingStore((state) => [state.isSplitting, state.setIsSplitting])
@@ -122,6 +123,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
 
   const handleInputToAmount = useCallback((amount: string) => {
     const regex = /^(\d+|0)?$/;
+    console.log("guardianData", guardianData, defaultGuardianData);
     if (regex.test(amount)) {
       setToAmount(amount);
       if (
@@ -145,13 +147,14 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
     // 100 Guardian: Pharaoh
     let totalAmount = amount;
     const SIZES = [1, 5, 10, 25, 50, 100];
-    let Datas = guardianData || [];
+    let list = [0, 0, 0, 0, 0, 0];
     for (var i = 0; i < SIZES.length; i++) {
       var index = SIZES.length - i - 1;
-      Datas[index].amount = Math.floor((totalAmount / SIZES[index]));
+      list[index] = Math.floor((totalAmount / SIZES[index]));
       totalAmount = totalAmount % SIZES[index];
     }
-    setGuardianData(Datas)
+    setGuardianList(list);
+    console.log("guardianList is ", list);
   }, [])
 
   const updateTotalGuardianList = useCallback((amount: number) => {
@@ -161,20 +164,20 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
     // 25 Guardian: Nobles
     // 50 Guardians: Viziers
     // 100 Guardian: Pharaoh
-    let totalAmount = amount;
+    let newtotalAmount = amount;
     const SIZES = [1, 5, 10, 25, 50, 100];
-    let Datas = defaultGuardianData || [];
+    let newDatas = defaultGuardianData || [];
     for (var i = 0; i < SIZES.length; i++) {
       var index = SIZES.length - i - 1;
-      Datas[index].amount = Math.floor((totalAmount / SIZES[index]));
-      totalAmount = totalAmount % SIZES[index];
+      newDatas[index].amount = Math.floor((newtotalAmount / SIZES[index]));
+      newtotalAmount = newtotalAmount % SIZES[index];
     }
-    setCraftsmanBal(Number(Datas[0].amount))
-    setScribeBal(Number(Datas[1].amount))
-    setPriestBal(Number(Datas[2].amount))
-    setNobleBal(Number(Datas[3].amount))
-    setVizierBal(Number(Datas[4].amount))
-    setPharaohBal(Number(Datas[5].amount))
+    setCraftsmanBal(Number(newDatas[0].amount))
+    setScribeBal(Number(newDatas[1].amount))
+    setPriestBal(Number(newDatas[2].amount))
+    setNobleBal(Number(newDatas[3].amount))
+    setVizierBal(Number(newDatas[4].amount))
+    setPharaohBal(Number(newDatas[5].amount))
   }, [])
 
 
@@ -209,6 +212,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   })
 
   useEffect(() => {
+    console.log('lost is ', guardianList);
     updateGuardianList(Math.floor(Number(toAmount)));
   }, [toAmount])
 
@@ -328,17 +332,47 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
           </div>
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center text-white">
             <div className={smallText}>Guardians to send</div>
-            <div className="grid sm:flex flex-row items-start gap-5 text-lg">
-            {guardianData.map((item) => {
-              if(item.amount) {
-                return (
-                  <div className="flex flex-row items-center" key={item.name}>
-                  <div>{item.name}:&nbsp;</div>
-                  <div className="text-2xl pl-[10px]">{item.amount}</div>
-                </div>
-                );
-              }
-            })}
+            <div className="grid sm:flex flex-row items-start gap-5 text-lg">     
+            
+   
+            {guardianList[0] > 0 && (
+              <div className="flex flex-row items-center">
+                <div>Craftsman:&nbsp;</div>
+                <div className="text-2xl pl-[10px]">{guardianList[0]}</div>
+              </div>
+            )}
+            {guardianList[1] > 0 && (
+              <div className="flex flex-row items-center">
+                <div>Scribe:&nbsp;</div>
+                <div className="text-2xl pl-[10px]">{guardianList[1]}</div>
+              </div>
+            )}
+            {guardianList[2] > 0 && (
+              <div className="flex flex-row items-center">
+                <div>Priest:&nbsp;</div>
+                <div className="text-2xl pl-[10px]">{guardianList[2]}</div>
+              </div>
+            )}
+            {guardianList[3] > 0 && (
+              <div className="flex flex-row items-center">
+                <div>Nobles:&nbsp;</div>
+                <div className="text-2xl pl-[10px]">{guardianList[3]}</div>
+              </div>
+            )}
+            {guardianList[4] > 0 && (
+              <div className="flex flex-row items-center">
+                <div>Viziers:&nbsp;</div>
+                <div className="text-2xl pl-[10px]">{guardianList[4]}</div>
+              </div>
+            )}
+            {guardianList[5] > 0 && (
+              <div className="flex flex-row items-center">
+                <div>Pharaoh:&nbsp;</div>
+                <div className="text-2xl pl-[10px]">{guardianList[5]}</div>
+              </div>
+            )}
+
+
             </div>
           </div>
         </div>
