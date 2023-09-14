@@ -9,14 +9,14 @@ import Scribe from "@/components/widgets/SVG/Scribe";
 import Priest from "@/components/widgets/SVG/Priest";
 import Noble from "@/components/widgets/SVG/Noble";
 import Viziers from "@/components/widgets/SVG/Viziers";
-import Pharaoh from "@/components/widgets/SVG/Pharaoh";
+// import Pharaoh from "@/components/widgets/SVG/Pharaoh";
+import GuardianImage from "@/components/widgets/Guardian/GuardianImage";
 
 // default css
 const smallGurdianText = "text-xs font-bold leading-[120%] text-[#A1A1AA] w-[130px] pr-2";
 
 const smallText =
   "text-xs font-bold leading-[120%] text-[#A1A1AA] w-[130px] pr-14";
-
 
 const paragraphBg =
   "w-full bg-[#27272A] p-6 rounded-[40px] flex flex-col gap-4";
@@ -73,11 +73,11 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
       <div className="flex flex-col gap-4">
       <div className="flex flex-col sm:flex-row items-start">
           <div className={`${smallGurdianText} w-24 pr-0`}>Your guardians</div>
-          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-6 w-full">
+          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full">
             {craftsmanBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Craftsman />
+                  <GuardianImage name='craftsmen' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Craftsman: {craftsmanBal}
@@ -87,7 +87,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
             {scribeBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Scribe />
+                  <GuardianImage name='scribe' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Scribe: {scribeBal}
@@ -97,7 +97,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
             {priestBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Priest />
+                  <GuardianImage name='priest' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Priest: {priestBal}
@@ -107,7 +107,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
             {nobleBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Noble />
+                  <GuardianImage name='noble' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Nobles: {nobleBal}
@@ -117,7 +117,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
             {vizierBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Viziers />
+                  <GuardianImage name='vizier' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Viziers: {vizierBal}
@@ -127,7 +127,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
             {pharaohBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Pharaoh />
+                  <GuardianImage name='pharaoh' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Pharaoh: {pharaohBal}

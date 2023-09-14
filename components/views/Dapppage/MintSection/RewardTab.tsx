@@ -15,6 +15,7 @@ import useGuardian, { GuardianID } from "@/hooks/useGuardian";
 import { getGuardianAddress } from "@/utils/addressHelper";
 import { getPublicClient } from "@/utils/viemHelper";
 import { useGuardianStore, usePendingStore } from "@/state/state";
+import GuardianImage from "@/components/widgets/Guardian/GuardianImage";
 
 // default css
 const smallText =
@@ -113,11 +114,11 @@ export default function RewardTab({
       <div className="flex flex-col gap-4">
         <div className="flex flex-col sm:flex-row items-start">
           <div className={`${smallText} w-24 pr-0`}>Your guardians</div>
-          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-6 w-full">
-            {craftsmanBal > 0 && (
+          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full">
+          {craftsmanBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Craftsman />
+                  <GuardianImage name='craftsmen' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Craftsman: {craftsmanBal}
@@ -127,7 +128,7 @@ export default function RewardTab({
             {scribeBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Scribe />
+                  <GuardianImage name='scribe' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Scribe: {scribeBal}
@@ -137,7 +138,7 @@ export default function RewardTab({
             {priestBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Priest />
+                  <GuardianImage name='priest' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Priest: {priestBal}
@@ -147,7 +148,7 @@ export default function RewardTab({
             {nobleBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Noble />
+                  <GuardianImage name='noble' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Nobles: {nobleBal}
@@ -157,7 +158,7 @@ export default function RewardTab({
             {vizierBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Viziers />
+                  <GuardianImage name='vizier' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Viziers: {vizierBal}
@@ -167,7 +168,7 @@ export default function RewardTab({
             {pharaohBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
-                  <Pharaoh />
+                  <GuardianImage name='pharaoh' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
                   Pharaoh: {pharaohBal}
