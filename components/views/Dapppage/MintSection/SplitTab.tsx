@@ -285,7 +285,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
         <div className={paragraphBg}>
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center">
             <div className={smallText}>Your total guardians</div>
-            <div className="text-[#F8D044] text-[28px] sm:text-[32px] font-semibold leading-[102%]">
+            <div className="text-[#F8D044] text-[28px] sm:text-[32px] font-semibold leading-[102%] sm:mt-0 mt-1">
               {guardianBal && guardianBal}{" "}
               <span className="font-[Newsreader] font-normal">Guardians</span>
             </div>
@@ -294,7 +294,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
         <div className={paragraphBg}>
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center">
             <div className={smallText}>To (which address)</div>
-            <div className="w-full lg:w-6/6 flex flex-col">
+            <div className="w-full lg:w-6/6 flex flex-col sm:mt-0 mt-1">
               <input
                 placeholder="0x000..."
                 className={`text-[24px] ${
