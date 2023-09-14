@@ -107,7 +107,11 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   };
 
   const handleInputToAddr = useCallback((addr: string) => {
-    if (!validateAddress(addr)) {
+    if(addr.length > 42) {
+      setAddressInputError(
+        `Invalid address.`
+      );
+    } else if(addr.length == 42 && !validateAddress(addr)) {
       setAddressInputError(
         `Invalid address.`
       );
@@ -206,16 +210,19 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   })
 
   useEffect(() => {
-    if (validateAddress(toAddr) && Number(toAmount) > 0 && Number(toAmount) < guardianBal) {
-      setIsDisabledSplit(false);
-    } 
+    console.log("isConnected is ", isConnected);
+    if (!validateAddress(toAddr) || Number(toAmount) == 0 || Number(toAmount) >= guardianBal || !isConnected) {
+      setIsDisabledSplit(true);
+    } else {
+      setIsDisabledSplit(false)
+    }
   }, [toAddr, toAmount, guardianBal])
 
   useEffect(() => {
     updateGuardianList(Math.floor(Number(toAmount)));
   }, [toAmount])
 
-  const isSendBtnDisabled = !isConnected;
+  // const isSendBtnDisabled = !isConnected;
   // console.log('isToAddress is ', isToAddress, isToAmount);
 
   return (
@@ -379,7 +386,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
       </div>
       {isConnected ? (
         <button
-          disabled={isSendBtnDisabled || isDisabledSplit}
+          disabled={isDisabledSplit}
           className="disabled:opacity-50 bg-[#2C91FE] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%]"
           onClick={() => handleSplit(toAddr, toAmount)}
         >
