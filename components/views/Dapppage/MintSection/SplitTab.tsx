@@ -73,7 +73,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
       <div className="flex flex-col gap-4">
       <div className="flex flex-col sm:flex-row items-start">
           <div className={`${smallGurdianText} w-24 pr-0`}>Your guardians</div>
-          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full">
+          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full sm:pl-[28px]">
             {craftsmanBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
@@ -148,7 +148,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
         <div className={paragraphBg}>
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center">
             <div className={smallText}>To (which address)</div>
-            <div className="w-full lg:w-5/6 flex flex-col">
+            <div className="w-full lg:w-6/6 flex flex-col">
               <input
                 placeholder="0x000..."
                 className={`text-[24px] ${
@@ -167,11 +167,11 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center">
             <div className={smallText}>Amount of guardians</div>
             <div className="flex flex-col">
-              <input
+            <input
                 placeholder="0"
-                className={`text-[24px] ${
+                className={`text-[28px] sm:text-[32px] font-semibold ${
                   inputError ? "border border-red-600" : "border-none"
-                } outline-none rounded-2xl bg-[#18181B] text-white text-center px-4 py-1 w-16`}
+                } leading-[102%] outline-none rounded-2xl bg-[#18181B] text-[#F8D044] text-center px-6 py-1 w-32 mt-2 sm:mt-0`}
                 value={toAmount}
                 onChange={(e) => handleInputToAmount(e.target.value)}
               />
