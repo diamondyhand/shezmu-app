@@ -80,7 +80,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
     setToAmount(amount);
   }, []);
 
-  const makeGuardian = useCallback((amount: number) => {
+  const updateGuardianList = useCallback((amount: number) => {
     // 1 Guardian: Craftsman
     // 5 Guardian: Scribe
     // 10 Guardian: High Priest
@@ -88,11 +88,16 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
     // 50 Guardians: Viziers
     // 100 Guardian: Pharaoh
     let totalAmount = amount;
+    const SIZES = [1, 5, 10, 25, 50, 100];
+    let Datas = guardianData || [];
     for (var i = 0; i < SIZES.length; i++) {
       var index = SIZES.length - i - 1;
-      totalAmount = amount % SIZES[index];
+      Datas[index].amount = Math.floor((totalAmount / SIZES[index]));
+      totalAmount = totalAmount % SIZES[index];
     }
+    setGuardianData(Datas)
   }, [])
+  
   const isSendBtnDisabled = !isConnected;
 
   return (
