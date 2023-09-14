@@ -56,7 +56,7 @@ const defaultGuardianData = [
     amount: 0,
   }
 ];
-export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scribeBal, priestBal, nobleBal, vizierBal, pharaohBal  }: SplitTabProps) {
+export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   const [
     guardianInfo,
     getGuardianInfo,
@@ -86,6 +86,14 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
   const [toAmount, setToAmount] = useState("1");
   const publicClient = getPublicClient();
 
+  const [craftsmanBal, setCraftsmanBal] = useState(0);
+  const [scribeBal, setScribeBal] = useState(0);
+
+  const [priestBal, setPriestBal] = useState(0);
+  const [nobleBal, setNobleBal] = useState(0);
+  const [vizierBal, setVizierBal] = useState(0);
+  const [pharaohBal, setPharaohBal] = useState(0);
+
   // hooks
   const { address, isConnected } = useAccount();
   const { open } = useWeb3Modal();
@@ -94,7 +102,6 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
 
 
   // callbacks
-  const handleSend = useCallback(() => {}, []);
   const validateAddress = (address: string) => {
     // Ethereum address regex pattern
     const addressRegex = /^0x[0-9a-fA-F]{40}$/;
@@ -145,8 +152,31 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
       totalAmount = totalAmount % SIZES[index];
     }
     setGuardianData(Datas)
-    console.log("datas is ", Datas);
   }, [])
+
+  const updateTotalGuardianList = useCallback((amount: number) => {
+    // 1 Guardian: Craftsman
+    // 5 Guardian: Scribe
+    // 10 Guardian: High Priest
+    // 25 Guardian: Nobles
+    // 50 Guardians: Viziers
+    // 100 Guardian: Pharaoh
+    let totalAmount = amount;
+    const SIZES = [1, 5, 10, 25, 50, 100];
+    let Datas = defaultGuardianData || [];
+    for (var i = 0; i < SIZES.length; i++) {
+      var index = SIZES.length - i - 1;
+      Datas[index].amount = Math.floor((totalAmount / SIZES[index]));
+      totalAmount = totalAmount % SIZES[index];
+    }
+    setCraftsmanBal(Number(Datas[0].amount))
+    setScribeBal(Number(Datas[1].amount))
+    setPriestBal(Number(Datas[2].amount))
+    setNobleBal(Number(Datas[3].amount))
+    setVizierBal(Number(Datas[4].amount))
+    setPharaohBal(Number(Datas[5].amount))
+  }, [])
+
 
   const handleSplit = async (to: string, amount: string) => {
     if (
@@ -164,6 +194,7 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
       });
       if (transaction.status === "success") {
         getGuardianBalance(address);
+        updateTotalGuardianList(guardianBal);
         getGuardianInfo();
       }
       setIsSplitting(false);
@@ -173,6 +204,9 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
     }
   };
 
+  useEffect(() => {
+    updateTotalGuardianList(guardianBal);
+  })
 
   useEffect(() => {
     updateGuardianList(Math.floor(Number(toAmount)));
