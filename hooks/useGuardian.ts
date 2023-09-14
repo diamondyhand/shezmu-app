@@ -84,12 +84,26 @@ const useGuardian = () => {
     return txnHash;
   }, [guardianContract, account]);
 
+  const split = useCallback(
+    async (to: string, amount: bigint) => {
+      if (!guardianContract || !account) return null;
+      const txnHash = await guardianContract.write.split(
+        [to, amount],
+        { account }
+      );
+      return txnHash;
+    },
+    [guardianContract, account]
+  );
+
+
   return {
     getBalance,
     getTokenAllowance,
     mint,
     compound,
     claim,
+    split
   };
 };
 

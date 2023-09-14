@@ -37,6 +37,7 @@ export type PendingState = {
     isMinting: boolean
     isClaiming: boolean
     isCompounding: boolean
+    isSplitting: boolean
 }
 
 export type PendingAction = {
@@ -45,4 +46,5 @@ export type PendingAction = {
     setIsMinting: (isHandling: boolean) => void;
     setIsClaiming: (isHandling: boolean) => void;
     setIsCompounding: (isHandling: boolean) => void;
+    setIsSplitting: (isHandling: boolean) => void;
 }

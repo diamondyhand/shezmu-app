@@ -47,9 +47,11 @@ export const usePendingStore = create<PendingState & PendingAction>((set) => ({
     isMinting: false,
     isClaiming: false,
     isCompounding: false,
+    isSplitting: false,
     setIsShezmuApproving: (isShezmuApproving) => set(() => ({ isShezmuApproving })),
     setIsTokenApproving: (isTokenApproving) => set(() => ({ isTokenApproving })),
     setIsMinting: (isMinting) => set(() => ({ isMinting })),
     setIsClaiming: (isClaiming) => set(() => ({ isClaiming })),
     setIsCompounding: (isCompounding) => set(() => ({ isCompounding })),
+    setIsSplitting: (isSplitting) => set(() => ({ isSplitting })),
 }))

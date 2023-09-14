@@ -4,13 +4,11 @@ import { useState, useCallback, useEffect } from "react";
 import { useAccount } from "wagmi";
 // ** web3 module imports
 import { useWeb3Modal } from "@web3modal/react";
-import Craftsman from "@/components/widgets/SVG/Craftsman";
-import Scribe from "@/components/widgets/SVG/Scribe";
-import Priest from "@/components/widgets/SVG/Priest";
-import Noble from "@/components/widgets/SVG/Noble";
-import Viziers from "@/components/widgets/SVG/Viziers";
-// import Pharaoh from "@/components/widgets/SVG/Pharaoh";
+import { getGuardianAddress, getShezmuAddress } from "@/utils/addressHelper";
 import GuardianImage from "@/components/widgets/Guardian/GuardianImage";
+import { useGuardianStore, usePendingStore } from "@/state/state";
+import useGuardian from "@/hooks/useGuardian";
+import { getPublicClient } from "@/utils/viemHelper";
 
 // default css
 const smallGurdianText = "text-xs font-bold leading-[120%] text-[#A1A1AA] w-[130px] pr-2";
@@ -20,6 +18,7 @@ const smallText =
 
 const paragraphBg =
   "w-full bg-[#27272A] p-6 rounded-[40px] flex flex-col gap-4";
+  const guardianAddress = getGuardianAddress();
 
 interface SplitTabProps {
     shezmuAmount: number;
@@ -59,18 +58,41 @@ const defaultGuardianData = [
   }
 ];
 export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scribeBal, priestBal, nobleBal, vizierBal, pharaohBal  }: SplitTabProps) {
+  const [
+    guardianInfo,
+    getGuardianInfo,
+    getGuardianBalance,
+    getShezmuBalance,
+    pendingRewards,
+    getPendingReward,
+  ] = useGuardianStore((state) => [
+    state.guardianInfo,
+    state.getGuardianInfo,
+    state.getGuardianBalance,
+    state.getShezmuBalance,
+    state.pendingReward,
+    state.getPendingReward,
+  ]);
+
+
   const SIZES = [1, 5, 10, 25, 50, 100];
   const [guardianData, setGuardianData] = useState(defaultGuardianData);
   // state
   const [isSending, setIsSending] = useState(false);
+  const [isSplitting, setIsSplitting] = usePendingStore((state) => [state.isSplitting, state.setIsSplitting])
+
   const [addressInputError, setAddressInputError] = useState("");
   const [inputError, setInputError] = useState("");
   const [toAddr, setToAddr] = useState("");
   const [toAmount, setToAmount] = useState("1");
+  const publicClient = getPublicClient();
 
   // hooks
   const { address, isConnected } = useAccount();
   const { open } = useWeb3Modal();
+
+  const { split } = useGuardian();
+
 
   // callbacks
   const handleSend = useCallback(() => {}, []);
@@ -125,6 +147,32 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
     }
     setGuardianData(Datas)
   }, [])
+
+  const handleSplit = async (to: string, amount: string) => {
+    if (
+      !guardianAddress ||
+      !address ||
+      isSplitting
+    )
+      return;
+    try {
+      setIsSplitting(true);
+      const txnHash = await split(to, BigInt(amount));
+      const transaction = await publicClient.waitForTransactionReceipt({
+        hash: txnHash || "0x",
+        timeout: 60_000,
+      });
+      if (transaction.status === "success") {
+        getGuardianBalance(address);
+        getGuardianInfo();
+      }
+      setIsSplitting(false);
+    } catch (err) {
+      console.log("Err ==> ", err);
+      setIsSplitting(false);
+    }
+  };
+
 
   useEffect(() => {
     updateGuardianList(Math.floor(Number(toAmount)));
@@ -265,9 +313,9 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
         <button
           disabled={isSendBtnDisabled}
           className="disabled:opacity-50 bg-[#2C91FE] h-[50px] sm:h-[73px] w-full rounded-xl text-black text-xl font-bold leading-[120%]"
-          onClick={() => handleSend()}
+          onClick={() => handleSplit(toAddr, toAmount)}
         >
-          {isSending ? "Sending..." : "Send"}
+          {isSplitting ? "Sending..." : "Send"}
         </button>
       ) : (
         <button
