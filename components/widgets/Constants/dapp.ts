@@ -45,4 +45,4 @@ export const DappRewardConfig: DappRewardConfigTypes[] = [
     }
 ]
 
-export const TabNameList: string[] = ['Mint', 'Reward', 'Compound']
+export const TabNameList: string[] = ['Mint', 'Reward', 'Compound', 'Split']

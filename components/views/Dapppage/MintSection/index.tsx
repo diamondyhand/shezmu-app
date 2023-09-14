@@ -17,6 +17,7 @@ import { getGuardianAddress, getShezmuAddress } from "@/utils/addressHelper";
 import { useAccount } from "wagmi";
 import useGuardian, { GuardianID } from "@/hooks/useGuardian";
 import { TokenListTypes } from "@/components/widgets/Constants/type";
+import SplitTab from "./SplitTab";
 
 // next font imports
 const manrope = Manrope({ subsets: ["latin"] });
@@ -215,6 +216,18 @@ export default function MintSection() {
               setSelectedToken={setSelectedToken}
               shezmuAmount={shezmuAmount}
               updateGuardianBalance={updateGuardianBalance}
+            />
+          )}
+          {activeTab === 'Split' && (
+            <SplitTab               
+              shezmuAmount={shezmuAmount}
+              guardianBal={guardianBalance}
+              craftsmanBal={craftsmanBal}
+              scribeBal={scribeBal}
+              priestBal={priestBal}
+              nobleBal={nobleBal}
+              vizierBal={vizierBal}
+              pharaohBal={pharaohBal}
             />
           )}
         </div>
