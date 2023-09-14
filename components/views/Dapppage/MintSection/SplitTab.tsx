@@ -33,20 +33,8 @@ interface SplitTabProps {
 }
 
 export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scribeBal, priestBal, nobleBal, vizierBal, pharaohBal  }: SplitTabProps) {
-  const guardians = [
-    {
-      img: "/image/01-pharaoh.png",
-      name: "Pharaoh: 1x",
-    },
-    {
-      img: "/image/02-vizier.png",
-      name: "Vizier: 1x",
-    },
-    {
-      img: "/image/02-vizier.png",
-      name: "Vizier: 1x",
-    },
-  ];
+  const SIZES = [1, 5, 10, 25, 50, 100];
+
   // state
   const [isSending, setIsSending] = useState(false);
   const [inputError, setInputError] = useState("");
@@ -66,6 +54,19 @@ export default function SplitTab({ shezmuAmount, guardianBal, craftsmanBal, scri
     setToAmount(amount);
   }, []);
 
+  const makeGuardian = useCallback((amount: number) => {
+    // 1 Guardian: Craftsman
+    // 5 Guardian: Scribe
+    // 10 Guardian: High Priest
+    // 25 Guardian: Nobles
+    // 50 Guardians: Viziers
+    // 100 Guardian: Pharaoh
+    let totalAmount = amount;
+    for (var i = 0; i < SIZES.length; i++) {
+      var index = SIZES.length - i - 1;
+      totalAmount = amount % SIZES[index];
+    }
+  }, [])
   const isSendBtnDisabled = !isConnected;
 
   return (
