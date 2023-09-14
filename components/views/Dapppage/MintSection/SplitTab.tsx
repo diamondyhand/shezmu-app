@@ -210,7 +210,6 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
   })
 
   useEffect(() => {
-    console.log("isConnected is ", isConnected);
     if (!validateAddress(toAddr) || Number(toAmount) == 0 || Number(toAmount) >= guardianBal || !isConnected) {
       setIsDisabledSplit(true);
     } else {

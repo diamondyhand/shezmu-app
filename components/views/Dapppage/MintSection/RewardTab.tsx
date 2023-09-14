@@ -1,5 +1,5 @@
 // ** react imports
-import React, { useState, useEffect, Dispatch, SetStateAction } from "react";
+import React, { useState, useEffect, useCallback, Dispatch, SetStateAction } from "react";
 // ** svg imports
 import Pharaoh from "@/components/widgets/SVG/Pharaoh";
 import Priest from "@/components/widgets/SVG/Priest";
@@ -66,6 +66,7 @@ export default function RewardTab({
   ]);
 
   const [isClaiming, setIsClaiming] = usePendingStore((state) => [state.isClaiming, state.setIsClaiming])
+  const [guardianList, setGuardianList] = useState([0, 0, 0, 0, 0, 0]);
 
   const { claim } = useGuardian();
 
@@ -109,69 +110,92 @@ export default function RewardTab({
     (pendingRewards[0] + shezmuAmount <= 0 && pendingRewards[1] <= 0) ||
     isClaiming;
 
+  const updateGuardianList = useCallback((amount: number) => {
+    // 1 Guardian: Craftsman
+    // 5 Guardian: Scribe
+    // 10 Guardian: High Priest
+    // 25 Guardian: Nobles
+    // 50 Guardians: Viziers
+    // 100 Guardian: Pharaoh
+    let totalAmount = amount;
+    const SIZES = [1, 5, 10, 25, 50, 100];
+    let list = [0, 0, 0, 0, 0, 0];
+    for (var i = 0; i < SIZES.length; i++) {
+      var index = SIZES.length - i - 1;
+      list[index] = Math.floor((totalAmount / SIZES[index]));
+      totalAmount = totalAmount % SIZES[index];
+    }
+    setGuardianList(list);
+  }, [])
+
+  useEffect(() => {
+    updateGuardianList(Math.floor(Number(guardianBal)));
+  }, [guardianBal])
+
+  
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col sm:flex-row items-start">
           <div className={`${smallText} w-24 pr-0`}>Your guardians</div>
           <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full sm:pl-[28px]">
-            {craftsmanBal > 0 && (
+            {guardianList[0] > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
                   <GuardianImage name='craftsmen' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
-                  Craftsman: {craftsmanBal}
+                  Craftsman: {guardianList[0]}
                 </div>
               </div>
             )}
-            {scribeBal > 0 && (
+            {guardianList[1] > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
                   <GuardianImage name='scribe' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
-                  Scribe: {scribeBal}
+                  Scribe: {guardianList[1]}
                 </div>
               </div>
             )}
-            {priestBal > 0 && (
+            {guardianList[2] > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
                   <GuardianImage name='priest' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
-                  Priest: {priestBal}
+                  Priest: {guardianList[2]}
                 </div>
               </div>
             )}
-            {nobleBal > 0 && (
+            {guardianList[3] > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
                   <GuardianImage name='noble' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
-                  Nobles: {nobleBal}
+                  Nobles: {guardianList[3]}
                 </div>
               </div>
             )}
-            {vizierBal > 0 && (
+            {guardianList[4] > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
                   <GuardianImage name='vizier' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
-                  Viziers: {vizierBal}
+                  Viziers: {guardianList[4]}
                 </div>
               </div>
             )}
-            {pharaohBal > 0 && (
+            {guardianList[5] > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
                   <GuardianImage name='pharaoh' />
                 </div>
                 <div className="text-[#FAFAFA] font-light leading-[120%] text-sm sm:text-base text-center">
-                  Pharaoh: {pharaohBal}
+                  Pharaoh: {guardianList[5]}
                 </div>
               </div>
             )}
