@@ -309,7 +309,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
             <div className="w-full lg:w-6/6 flex flex-col sm:mt-0 mt-1 sm:ml-[8px]">
               <input
                 placeholder="0x000..."
-                className={`text-[24px] ${
+                className={`text-[16px] sm:text-[24px] ${
                   addressInputError ? "border border-red-600" : "border-none"
                 } outline-none rounded-2xl bg-[#18181B] text-white px-4 py-1 w-full`}
                 value={toAddr}
@@ -340,43 +340,41 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
           </div>
           <div className="w-full flex flex-col lg:flex-row items-start lg:items-center text-white">
             <div className={smallText}>Guardians to send</div>
-            <div className="grid sm:flex flex-row items-start gap-5 text-lg">     
-            
-   
+            <div className="grid sm:flex flex-row items-start gap-5 sm:text-lg text:[20px] sm:mt-0 mt-[10px]">               
             {guardianList[0] > 0 && (
               <div className="flex flex-row items-center">
                 <div>Craftsman:&nbsp;</div>
-                <div className="text-2xl pl-[10px]">{guardianList[0]}</div>
+                <div className="text:[20px] sm:text-2xl pl-[10px]">{guardianList[0]}</div>
               </div>
             )}
             {guardianList[1] > 0 && (
               <div className="flex flex-row items-center">
                 <div>Scribe:&nbsp;</div>
-                <div className="text-2xl pl-[10px]">{guardianList[1]}</div>
+                <div className="text:[20px] sm:text-2xl pl-[10px]">{guardianList[1]}</div>
               </div>
             )}
             {guardianList[2] > 0 && (
               <div className="flex flex-row items-center">
                 <div>Priest:&nbsp;</div>
-                <div className="text-2xl pl-[10px]">{guardianList[2]}</div>
+                <div className="text:[20px] sm:text-2xl pl-[10px]">{guardianList[2]}</div>
               </div>
             )}
             {guardianList[3] > 0 && (
               <div className="flex flex-row items-center">
                 <div>Nobles:&nbsp;</div>
-                <div className="text-2xl pl-[10px]">{guardianList[3]}</div>
+                <div className="text:[20px] sm:text-2xl pl-[10px]">{guardianList[3]}</div>
               </div>
             )}
             {guardianList[4] > 0 && (
               <div className="flex flex-row items-center">
                 <div>Viziers:&nbsp;</div>
-                <div className="text-2xl pl-[10px]">{guardianList[4]}</div>
+                <div className="text:[20px] sm:text-2xl pl-[10px]">{guardianList[4]}</div>
               </div>
             )}
             {guardianList[5] > 0 && (
               <div className="flex flex-row items-center">
                 <div>Pharaoh:&nbsp;</div>
-                <div className="text-2xl pl-[10px]">{guardianList[5]}</div>
+                <div className="text:[20px] sm:text-2xl pl-[10px]">{guardianList[5]}</div>
               </div>
             )}
 
