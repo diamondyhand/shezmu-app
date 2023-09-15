@@ -2,12 +2,13 @@ import { RouterLinkConfigTypes } from "./type"
 
 export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [    
     {
-        title: 'OpenSea',
-        link: 'https://opensea.io/collection/shezmu-guardian'
-    },    
-    {
         title: 'LooksRare',
         link: 'https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97'
+    },    
+
+    {
+        title: 'OpenSea',
+        link: 'https://opensea.io/collection/shezmu-guardian'
     },    
     {
         title: 'Uniswap',
@@ -21,13 +22,14 @@ export const MobileRouterLinkConfig: RouterLinkConfigTypes[] = [
         link: '/dapp'
     },
     {
+        title: 'LooksRare',
+        link: 'https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97'
+    },     
+    {
         title: 'OpenSea',
         link: 'https://opensea.io/collection/shezmu-guardian'
     },
-    {
-        title: 'LooksRare',
-        link: 'https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97'
-    },      
+ 
     {
         title: 'Uniswap',
         link: 'https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x5fE72ed557d8a02FFf49B3B826792c765d5cE162'
@@ -49,13 +51,14 @@ export const MobileRouterLinkConfig: RouterLinkConfigTypes[] = [
 
 export const DappRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
-        title: 'OpenSea',
-        link: 'https://opensea.io/collection/shezmu-guardian'
-    },
-    {
         title: 'LooksRare',
         link: 'https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97'
     },      
+    {
+        title: 'OpenSea',
+        link: 'https://opensea.io/collection/shezmu-guardian'
+    },
+
     {
         title: 'Uniswap',
         link: 'https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x5fE72ed557d8a02FFf49B3B826792c765d5cE162'
