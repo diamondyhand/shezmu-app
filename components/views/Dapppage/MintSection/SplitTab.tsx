@@ -309,7 +309,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
             <div className="w-full lg:w-6/6 flex flex-col sm:mt-0 mt-1 sm:ml-[8px]">
               <input
                 placeholder="0x000..."
-                className={`text-[16px] sm:text-[24px] ${
+                className={`text-[18px] sm:text-[24px] ${
                   addressInputError ? "border border-red-600" : "border-none"
                 } outline-none rounded-2xl bg-[#18181B] text-white px-4 py-1 w-full`}
                 value={toAddr}
