@@ -231,7 +231,7 @@ export default function SplitTab({ shezmuAmount, guardianBal }: SplitTabProps) {
       <div className="flex flex-col gap-4">
       <div className="flex flex-col sm:flex-row items-start">
           <div className={`${smallGurdianText} w-24 pr-0 pl-[10px] sm:pl-0`}>Your guardians</div>
-          <div className="flex flex-wrap sm:justify-normal gap-0 sm:gap-3 sm:w-full sm:pl-[28px]">
+          <div className="flex flex-wrap sm:justify-normal gap-0 sm:gap-3 sm:w-full sm:pl-[28px] justify-between">
             {craftsmanBal > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
