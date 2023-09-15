@@ -49,14 +49,23 @@ export default function Footer() {
                         <a href='/'>
                             <img className="sm:mt-0 mt-2" src='/image/footer-logo.png' alt='placeholder'/>
                         </a>
-                        <div className='flex'>
+                        <div className='sm:flex block'>
                             
                             <a href='https://etherscan.io/address/0x5fe72ed557d8a02fff49b3b826792c765d5ce162' target='_blank'>
                                 <div className="text-[#A1A1AA] sm:pl-5">Shezmu contract</div>
                             </a>
                             <a href='https://etherscan.io/address/0xFE6c938824C5059edB03579c8DE26Ca095933C97' target='_blank'>
-                                <div className="text-[#A1A1AA] pl-5">Guardian contract</div>
+                                <div className="text-[#A1A1AA] sm:pl-5 sm:pt-0 pt-[10px]">Guardian contract</div>
                             </a>
+                            <div className="text-[#A1A1AA] sm:pl-5 flex sm:mt-0 mt-[9px] sm:mb-0 mb-[8px]">
+                                <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="#A1A1AA" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 2-8.4 7.05a1 1 0 0 1-1.2 0L1 2m18 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1m18 0v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2"/>
+                                </svg>
+                                <a href='mailto:shezmus@proton.me' className="pl-[6px]" target='_blank'>
+                                    shezmus@proton.me
+                                </a>
+                            </div>
+
                         </div>
                     </div>
                     <div className="text-[#D1B03A]">© 2023 Shezmu. All rights reserved.</div>
