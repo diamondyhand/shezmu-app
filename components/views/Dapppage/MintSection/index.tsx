@@ -158,8 +158,8 @@ export default function MintSection() {
   return (
     <MintContainer className={manrope.className}>
       <div className="max-w-7xl w-full self-center flex flex-col items-center px-2 sm:px-5 md:px-12 lg:px-16 xl:px-0">
-        <div className="max-w-5xl w-full flex flex-col gap-8 px-4 py-8 sm:p-8 lg:p-10 border-4 border-[#F8D044] rounded-[40px] bg-[#18181B] overflow-hidden">
-          <div className="flex items-center justify-start gap-2 text-[16px] sm:text-2xl font-bold leading-[120%]">
+        <div className="max-w-5xl w-full flex flex-col gap-8 sm:px-4 px-3 py-8 sm:p-8 lg:p-10 border-4 border-[#F8D044] rounded-[40px] bg-[#18181B] overflow-hidden">
+          <div className="flex items-center justify-start gap-2 text-[16px] sm:text-2xl font-bold leading-[120%] sm:pl-[0px] pl-[10px]">
             {TabNameList.map((item, index) => (
               <div
                 key={item}

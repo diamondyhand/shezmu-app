@@ -21,6 +21,8 @@ import GuardianImage from "@/components/widgets/Guardian/GuardianImage";
 const smallText =
   "text-xs font-bold leading-[120%] text-[#A1A1AA] w-[130px] pr-2";
 
+const smallGurdianText = "text-xs font-bold leading-[120%] text-[#A1A1AA] w-[130px] pr-2 sm:pl-0 pl-[10px]";
+
 interface RewardTabProps {
   shezmuAmount: number;
   guardianBal: number;
@@ -137,8 +139,8 @@ export default function RewardTab({
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col sm:flex-row items-start">
-          <div className={`${smallText} w-24 pr-0`}>Your guardians</div>
-          <div className="flex flex-wrap justify-between sm:justify-normal gap-2 sm:gap-3 w-full sm:pl-[28px]">
+          <div className={`${smallGurdianText} w-24 pr-0`}>Your guardians</div>
+          <div className="flex flex-wrap sm:justify-normal gap-0 sm:gap-3 w-full sm:pl-[28px]">
             {guardianList[0] > 0 && (
               <div className="flex flex-col items-center justify-between">
                 <div className="scale-75">
