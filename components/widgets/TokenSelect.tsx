@@ -27,6 +27,7 @@ export default function TokenSelect({ selectedToken, setSelectedToken, tokens }:
 
     useEffect(() => {
         if (feeTokenList && feeTokenList.length > 0) {
+            console.log("feeTokenList is ", feeTokenList);
             setSelectedToken(feeTokenList[0])
         }
     }, [feeTokenList])
@@ -45,6 +46,7 @@ export default function TokenSelect({ selectedToken, setSelectedToken, tokens }:
                             <Icon icon="icon-park-outline:down" fontSize={16} className='text-white' />
                         </span>
                     </Listbox.Button>
+                    
                     <Transition
                         as={Fragment}
                         leave="transition ease-in duration-100"

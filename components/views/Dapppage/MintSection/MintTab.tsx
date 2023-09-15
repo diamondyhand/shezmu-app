@@ -108,7 +108,7 @@ export default function MintTab({
       }
     }
   };
-
+  console.log("guardianInfo  ", guardianInfo?.allFeeTokens);
   const handleShezmuApprove = async () => {
     if (!guardianAddress || !guardianAmount || !address || !shezmuApprove)
       return;
