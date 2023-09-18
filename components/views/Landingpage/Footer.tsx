@@ -23,7 +23,7 @@ export default function Footer() {
                     <a href='/dapp' target="_self">
                         <div className={`text-sm text-[#A1A1AA] sm:font-bold cursor-pointer`}>Dapp</div>
                     </a>
-                    <a href='https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97' target='_blank'>
+                    <a href='https://looksrare.org/collections/0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] sm:font-bold cursor-pointer`}>LooksRare</div>
                     </a>
 

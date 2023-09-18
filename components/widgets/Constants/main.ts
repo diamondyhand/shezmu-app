@@ -3,7 +3,7 @@ import { RouterLinkConfigTypes } from "./type"
 export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [    
     {
         title: 'LooksRare',
-        link: 'https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97'
+        link: 'https://looksrare.org/collections/0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa'
     },    
 
     {
@@ -23,7 +23,7 @@ export const MobileRouterLinkConfig: RouterLinkConfigTypes[] = [
     },
     {
         title: 'LooksRare',
-        link: 'https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97'
+        link: 'https://looksrare.org/collections/0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa'
     },     
     {
         title: 'OpenSea',
@@ -52,7 +52,7 @@ export const MobileRouterLinkConfig: RouterLinkConfigTypes[] = [
 export const DappRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
         title: 'LooksRare',
-        link: 'https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97'
+        link: 'https://looksrare.org/collections/0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa'
     },      
     {
         title: 'OpenSea',
