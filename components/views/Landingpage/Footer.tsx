@@ -59,7 +59,7 @@ export default function Footer() {
                             <a href='https://etherscan.io/address/0x5fe72ed557d8a02fff49b3b826792c765d5ce162' target='_blank'>
                                 <div className="text-[#A1A1AA] sm:pl-5">Shezmu contract</div>
                             </a>
-                            <a href='https://etherscan.io/address/0xFE6c938824C5059edB03579c8DE26Ca095933C97' target='_blank'>
+                            <a href='https://etherscan.io/address/0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa' target='_blank'>
                                 <div className="text-[#A1A1AA] sm:pl-5 sm:pt-0 pt-[10px]">Guardian contract</div>
                             </a>
                             <div className="text-[#A1A1AA] sm:pl-5 flex sm:mt-0 mt-[9px] sm:mb-0 mb-[8px]">
