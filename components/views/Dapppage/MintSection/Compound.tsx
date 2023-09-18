@@ -194,6 +194,12 @@ export default function Compound({
     }
   }, [selectedToken, selectedTokenAllowance, guardianInfo?.txnFee, address]);
 
+  useEffect(() => {
+    // pendingReward();
+  })
+
+  console.log('pendingRewards is ', pendingRewards[0] );
+
   const isMintBtnDisabled =
     !walletConnected ||
     pendingRewards[0] + shezmuAmount <= 0 ||
@@ -201,6 +207,8 @@ export default function Compound({
       pendingRewards[0] + shezmuAmount ||
     isCompounding ||
     !isTokenApproved;
+
+  const isHidden = pendingRewards[0] > 0;
 
   return (
     <div className="flex flex-col gap-8">

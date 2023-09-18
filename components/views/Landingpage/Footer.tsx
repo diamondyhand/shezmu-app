@@ -23,13 +23,13 @@ export default function Footer() {
                     <a href='/dapp' target="_self">
                         <div className={`text-sm text-[#A1A1AA] sm:font-bold cursor-pointer`}>Dapp</div>
                     </a>
-                    <a href='https://looksrare.org/collections/0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa' target='_blank'>
+                    {/* <a href='https://looksrare.org/collections/0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] sm:font-bold cursor-pointer`}>LooksRare</div>
                     </a>
 
                     <a href='https://opensea.io/collection/shezmu-guardian' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] sm:font-bold cursor-pointer`}>Opensea</div>
-                    </a>
+                    </a> */}
 
                     <a href='https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x5fE72ed557d8a02FFf49B3B826792c765d5cE162' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] sm:font-bold cursor-pointer`}>Uniswap</div>

@@ -15,3 +15,7 @@ export const LaunchAppButton = tw.button`
 export const ApproveButton = tw.button<{ isTokenApproved: boolean | undefined }>`
     disabled:opacity-60 opacity-100 rounded-xl bg-[#2C91FE] text-black font-bold leading-6 tracking-[-0.6px] px-4 py-1.5 sm:py-2 w-full lg:w-auto mt-2 lg:mt-0 ${({ isTokenApproved }) => isTokenApproved ? 'hidden' : 'block'}
 `
+
+export const ApproveSection = tw.div<{ isHidden: boolean | undefined }>`
+    ${({ isHidden }) => isHidden ? 'hidden' : 'block'}
+`
