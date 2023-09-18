@@ -36,7 +36,7 @@ export default function DrawerSection({
                 </div>
                 <div className='flex flex-col px-4 gap-6 py-6 z-20 mt-8 h-full'>
                     {MobileRouterLinkConfig.map(item => (
-                        <Link href={item.link} key={item.title} onClick={toggleDrawer(false)} target={item.title == "DApp" ? "_self": "_blank"}>
+                        <Link href={item.link} key={item.title} onClick={toggleDrawer(false)} target={item.title == "Dapp" ? "_self": "_blank"}>
                             <div className='font-[Newsreader] text-[24px] font-medium leading-[95%] cursor-pointer'>
                                 {item.title}
                                 <div className='flex flex-wrap items-center'>

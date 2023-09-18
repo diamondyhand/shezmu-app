@@ -18,7 +18,7 @@ export const IndexRouterLinkConfig: RouterLinkConfigTypes[] = [
 
 export const MobileRouterLinkConfig: RouterLinkConfigTypes[] = [
     {
-        title: 'DApp',
+        title: 'Dapp',
         link: '/dapp'
     },
     {

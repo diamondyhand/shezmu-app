@@ -78,7 +78,7 @@ export default function Header() {
                 <Stack direction='row' alignItems='center' gap={3}>
                     <div className='hidden md:flex items-center gap-6'>
                         {RouterLinkConfig?.map(item => (
-                            <Link href={item.link} key={item.title} target={item.title == "DApp" ? "_self" : "_blank"}> 
+                            <Link href={item.link} key={item.title} target={item.title == "Dapp" ? "_self" : "_blank"}> 
                                 <Menu as="div" className="relative inline-block text-left">
                                     <div className='cursor-pointer text-white font-bold fontSize-[14px] items-center gap-1'>
                                         {item.title}

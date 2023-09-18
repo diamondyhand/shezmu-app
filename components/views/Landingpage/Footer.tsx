@@ -21,7 +21,7 @@ export default function Footer() {
             <div className="max-w-7xl w-full self-center flex flex-wrap mt-20 sm:mt-12 z-20 px-5 md:px-12 lg:px-16 xl:px-0">              
                 <div className="w-full sm:w-1/2 lg:w-1/4">
                     <a href='/dapp' target="_self">
-                        <div className={`text-sm text-[#A1A1AA] sm:font-bold cursor-pointer`}>DApp</div>
+                        <div className={`text-sm text-[#A1A1AA] sm:font-bold cursor-pointer`}>Dapp</div>
                     </a>
                     <a href='https://looksrare.org/collections/0xFE6c938824C5059edB03579c8DE26Ca095933C97' target='_blank'>
                         <div className={`text-sm mt-4 text-[#A1A1AA] sm:font-bold cursor-pointer`}>LooksRare</div>
