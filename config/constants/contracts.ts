@@ -12,6 +12,3 @@ export default {
     1: "0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa",
   },
 };
-
-
-0x1d1B79A8C50Df0e11019f822cd3d7E5d485eBdAa

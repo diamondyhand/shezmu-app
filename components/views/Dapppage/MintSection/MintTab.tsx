@@ -98,7 +98,6 @@ export default function MintTab({
   const { getTokenAllowance } = useGuardian();
 
 
-  console.log('pendingReward is ', pendingRewards);
   const isHidden = (pendingRewards[1] >= guardianInfo?.txnFee);
   const approveSection = !isHidden ? 'flex flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0' : 'hidden flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0'
 
