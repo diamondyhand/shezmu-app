@@ -73,6 +73,7 @@ export default function Compound({
   const [walletConnected, setWalletConnected] = useState(false);
   const [error, setError] = useState<String>("");
   const [isTokenApproved, setIsTokenApproved] = useState(true);
+  // const [isHidden, setIsHidden] = useState(false);
 
   // hooks
   const { address, isConnected } = useAccount();
@@ -187,18 +188,27 @@ export default function Compound({
       setIsTokenApproved(true);
       return;
     }
+
     if (guardianInfo?.txnFee && selectedTokenAllowance !== undefined) {
       setIsTokenApproved(
         !selectedToken || selectedTokenAllowance >= guardianInfo?.txnFee
       );
     }
-  }, [selectedToken, selectedTokenAllowance, guardianInfo?.txnFee, address]);
+
+    // if(selectedTokenAllowance && pendingRewards[1]) {
+    //   console.log(":asdf ", pendingRewards[1] > selectedTokenAllowance);
+    //   setIsHidden((pendingRewards[1] > selectedTokenAllowance));
+    // }
+  }, [selectedToken, selectedTokenAllowance, guardianInfo?.txnFee, address, pendingRewards]);
 
   useEffect(() => {
-    // pendingReward();
-  })
-
-  console.log('pendingRewards is ', pendingRewards[0] );
+    if(selectedTokenAllowance && pendingRewards[1]) {
+      console.log(":asdf ", pendingRewards);
+    }
+  }, [])
+  const isHidden = (pendingRewards[1] > selectedTokenAllowance);
+  const approveSection = !isHidden ? 'flex flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0' : 'hidden flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0'
+  console.log(":asdfaaa ", pendingRewards, selectedTokenAllowance, isHidden);
 
   const isMintBtnDisabled =
     !walletConnected ||
@@ -208,7 +218,6 @@ export default function Compound({
     isCompounding ||
     !isTokenApproved;
 
-  const isHidden = pendingRewards[0] > 0;
 
   return (
     <div className="flex flex-col gap-8">
@@ -273,7 +282,7 @@ export default function Compound({
               })}
             </div>
           </div>
-          <div className="flex flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+          <div className={approveSection}>
             <TokenSelect
               selectedToken={selectedToken}
               setSelectedToken={setSelectedToken}
@@ -281,7 +290,7 @@ export default function Compound({
             />
             <ApproveBtn
               isTokenApproved={isTokenApproved}
-              className="mt-2 sm:mt-0"
+              className={"mt-2 sm:mt-0 "}
               isApproving={isTokenApproving}
               onClick={handleSelectedTokenApprove}
             />

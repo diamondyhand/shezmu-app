@@ -24,6 +24,7 @@ import { getGuardianAddress, getShezmuAddress } from "@/utils/addressHelper";
 import { getPublicClient } from "@/utils/viemHelper";
 import { getDecimals } from "@/utils/erc20";
 import { useGuardianStore, usePendingStore } from "@/state/state";
+import { ApproveSection } from "@/components/widgets/Button/style";
 
 // default css
 const smallText =
@@ -62,11 +63,12 @@ export default function MintTab({
   // hooks
   const { address, isConnected } = useAccount();
   const { mint: mintGuardian } = useGuardian();
-  const [guardianInfo, getGuardianInfo, getGuardianBalance, getShezmuBalance] =
+  const [guardianInfo, getGuardianInfo, getGuardianBalance, pendingRewards ,getShezmuBalance] =
     useGuardianStore((state) => [
       state.guardianInfo,
       state.getGuardianInfo,
       state.getGuardianBalance,
+      state.pendingReward,
       state.getShezmuBalance,
     ]);
   const [
@@ -93,6 +95,12 @@ export default function MintTab({
   const [error, setError] = useState<String>("");
   const [isShezmuApproved, setIsShezmuApproved] = useState(true);
   const [isTokenApproved, setIsTokenApproved] = useState(true);
+  const { getTokenAllowance } = useGuardian();
+
+
+  console.log('pendingReward is ', pendingRewards);
+  const isHidden = (pendingRewards[1] > selectedTokenAllowance);
+  const approveSection = !isHidden ? 'flex flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0' : 'hidden flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0'
 
   // funcitons
   const handleInputGuardianAmount = (guardianAmount: string) => {
@@ -108,7 +116,6 @@ export default function MintTab({
       }
     }
   };
-  console.log("guardianInfo  ", guardianInfo?.allFeeTokens);
   const handleShezmuApprove = async () => {
     if (!guardianAddress || !guardianAmount || !address || !shezmuApprove)
       return;
@@ -351,7 +358,7 @@ export default function MintTab({
               })}
             </div>
           </div>
-          <div className="flex flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0">
+          <div className={approveSection}>
             <TokenSelect
               selectedToken={selectedToken}
               setSelectedToken={setSelectedToken}
