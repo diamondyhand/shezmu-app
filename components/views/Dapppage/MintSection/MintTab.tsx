@@ -91,14 +91,20 @@ export default function MintTab({
     selectedToken?.address || ZERO_ADDRESS
   );
   const [guardianAmount, setGuardianAmount] = useState("1");
+  const [selectedDecimal, setSelectedDecimal] = useState(6);
   const [inputError, setInputError] = useState("");
   const [error, setError] = useState<String>("");
   const [isShezmuApproved, setIsShezmuApproved] = useState(true);
   const [isTokenApproved, setIsTokenApproved] = useState(true);
   const { getTokenAllowance } = useGuardian();
 
+  const approveAmount = parseUnits(
+    guardianInfo?.txnFee.toString(),
+    selectedDecimal
+  );
 
-  const isHidden = (pendingRewards[1] >= guardianInfo?.txnFee);
+  const isHidden = (pendingRewards[1] >= approveAmount);
+  console.log("guardianInfo?.txnFee is ", pendingRewards[1], approveAmount);
   const approveSection = !isHidden ? 'flex flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0' : 'hidden flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0'
 
   // funcitons
@@ -158,6 +164,7 @@ export default function MintTab({
         guardianInfo?.txnFee.toString(),
         tokenDecimal
       );
+      setSelectedDecimal(tokenDecimal);
       const txnHash = await selectedTokenApprove(
         guardianAddress,
         approveAmount

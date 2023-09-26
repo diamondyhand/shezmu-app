@@ -69,6 +69,13 @@ export default function Compound({
 
   // react hooks
   const [guardianAmount, setGuardianAmount] = useState("1");
+  const [selectedDecimal, setSelectedDecimal] = useState(6);
+
+  const approveAmount = parseUnits(
+    guardianInfo?.txnFee.toString(),
+    selectedDecimal
+  );
+
   const [inputError, setInputError] = useState("");
   const [walletConnected, setWalletConnected] = useState(false);
   const [error, setError] = useState<String>("");
@@ -206,9 +213,10 @@ export default function Compound({
       console.log(":asdf ", pendingRewards);
     }
   }, [])
-  const isHidden = (pendingRewards[1] >= guardianInfo?.txnFee);
+  const isHidden = (pendingRewards[1] >= approveAmount);
+  console.log("asdfsdfdf:asdf ", pendingRewards, approveAmount);
+
   const approveSection = !isHidden ? 'flex flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0' : 'hidden flex-col md:flex-row items-start sm:items-center gap-1 md:gap-4 w-full sm:w-auto mt-2 sm:mt-0'
-  console.log(":asdfaaa ", pendingRewards, selectedTokenAllowance, isHidden);
 
   const isMintBtnDisabled =
     !walletConnected ||
